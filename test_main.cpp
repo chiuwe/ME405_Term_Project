@@ -129,8 +129,10 @@ int main (void)
 	p_rate_1 = new shared_data<float>;
 
    //make new stepper here
+   Stepper* stepDrive = new Stepper(&ser_port, 200, 2, 3, 1, &DDRC, &PORTC);
 
    //make new task stepper here
+   new task_stepper("Stepper1", tskIDLE_PRIORITY + 1, 240, &ser_port, stepDrive, p_speed, p_numSteps);
 
 	// The user interface is at low priority; it could have been run in the idle task
 	// but it is desired to exercise the RTOS more thoroughly in this test program.

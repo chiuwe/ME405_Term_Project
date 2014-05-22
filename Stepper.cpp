@@ -53,13 +53,13 @@ http://www.arduino.cc/en/Tutorial/Stepper
  * two-wire constructor.
  * Sets which wires should control the motor.
  */
-Stepper::Stepper( emstream *p_serial_port,
+Stepper::Stepper( emstream *p_serial_port, 
                   uint16_t numberOfSteps,
-                  volatile uint8_t * motorPin1,
-                  volatile uint8_t * motorPin2,
-                  volatile uint8_t * powerPin,
+                  uint8_t motorPin1,
+                  uint8_t motorPin2,
+                  uint8_t powerPin,
                   volatile uint8_t *p_ddr,
-                  uint8_t ddr_mask) {
+                  volatile uint8_t * pPort) {
   ptr_to_serial = p_serial_port;
   step_number = 0;      // which step the motor is on
   direction = 0;      // motor direction
@@ -70,9 +70,11 @@ Stepper::Stepper( emstream *p_serial_port,
   motor_pin_2 = motorPin2;
   power_pin = powerPin;
 
-  *power_pin = 0;
+  p_port = pPort;
   // setup the pins on the microcontroller:
-  *p_ddr |= ddr_mask;
+  *p_ddr |= (1 << motor_pin_1) | (1 << motor_pin_2) | (1 << power_pin);
+
+  *p_port &= ~(1 << power_pin);
 
   DBG(ptr_to_serial, "Motor driver constructor OK" << endl);
 }
@@ -99,7 +101,7 @@ void Stepper::step(int16_t steps_to_move)
   if (steps_to_move < 0) {direction = 0;}
 
   //power the chip that runs the motor only while the motor is running
-  *power_pin = 1;
+  *p_port |= (1 << power_pin);
   
   // decrement the number of steps, moving one step each time:
   while(steps_left > 0) {
@@ -126,7 +128,7 @@ void Stepper::step(int16_t steps_to_move)
     stepMotor(step_number % 4);
   }
   //unpower the chip when you're done
-  *power_pin = 0;
+  *p_port &= ~(1 << power_pin);
 }
 
 /*
@@ -136,20 +138,20 @@ void Stepper::stepMotor(uint8_t thisStep)
 {
   switch (thisStep) {
     case 0: /* 01 */
-      *motor_pin_1 = 0;
-      *motor_pin_2 = 1;
+      *p_port &= ~(1 << motor_pin_1);
+      *p_port |= (1 << motor_pin_2);
       break;
     case 1: /* 11 */
-      *motor_pin_1 = 1;
-      *motor_pin_2 = 1;
+      *p_port |= (1 << motor_pin_1);
+      *p_port |= (1 << motor_pin_2);
       break;
     case 2: /* 10 */
-      *motor_pin_1 = 1;
-      *motor_pin_2 = 0;
+      *p_port |= (1 << motor_pin_1);
+      *p_port &= ~(1 << motor_pin_2);
       break;
     case 3: /* 00 */
-      *motor_pin_1 = 0;
-      *motor_pin_2 = 0;
+      *p_port &= ~(1 << motor_pin_1);
+      *p_port &= ~(1 << motor_pin_2);
       break;
   } 
   
