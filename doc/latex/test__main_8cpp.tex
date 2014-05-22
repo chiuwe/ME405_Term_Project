@@ -1,0 +1,215 @@
+\hypertarget{test__main_8cpp}{\section{test\-\_\-main.\-cpp \-File \-Reference}
+\label{test__main_8cpp}\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$avr/io.\-h$>$}\*
+{\ttfamily \#include $<$avr/wdt.\-h$>$}\*
+{\ttfamily \#include $<$string.\-h$>$}\*
+{\ttfamily \#include \char`\"{}\-Free\-R\-T\-O\-S.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}task.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}queue.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}croutine.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}rs232int.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}time\-\_\-stamp.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}frt\-\_\-task.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}frt\-\_\-text\-\_\-queue.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}frt\-\_\-queue.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}frt\-\_\-shared\-\_\-data.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}shares.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}task\-\_\-user.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}task\-\_\-motor.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{test__main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\-\_\-t \hyperlink{test__main_8cpp_a6dd5794690e811f62bce8432acff99a0}{\-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S} = 4
+\item 
+frt\-\_\-text\-\_\-queue $\ast$ \hyperlink{test__main_8cpp_a0f3e0982ec5df30e2339e7162f60a1d6}{print\-\_\-ser\-\_\-queue}
+\item 
+frt\-\_\-queue$<$ uint32\-\_\-t $>$ $\ast$ \hyperlink{test__main_8cpp_a943b100cc398890af64c8c00626935cd}{p\-\_\-queue\-\_\-1}
+\item 
+shared\-\_\-data$<$ uint32\-\_\-t $>$ $\ast$ \hyperlink{test__main_8cpp_a6e36343e3fbd1317e9bbbdfee0691141}{p\-\_\-share\-\_\-1}
+\item 
+shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{test__main_8cpp_af4072aaf6ada6eb77990a94e7635f3cf}{power\-\_\-1}
+\item 
+shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{test__main_8cpp_a083156cd9b0019a19d58e68339029490}{power\-\_\-2}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{test__main_8cpp_ac332aa182be3f396aab006e2a1223a8d}{brake\-\_\-1}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{test__main_8cpp_a97c4fd12a21fba2f57e184c9132f2a80}{brake\-\_\-2}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{test__main_8cpp_aa5a892890ce4839648694e817fbddfd3}{pot\-\_\-1}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{test__main_8cpp_a67de327568f25bf830e7d71505443de8}{pot\-\_\-2}
+\item 
+uint32\-\_\-t $\ast$ \hyperlink{test__main_8cpp_a72ac6f1f6a1b9cb1edc7836f31af85b5}{p\-\_\-glob\-\_\-of\-\_\-probs}
+\item 
+shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{test__main_8cpp_ac174d5bcd10a2ba8775bab06712b7ce8}{p\-\_\-rate\-\_\-1}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This file contains the \hyperlink{test__main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main()} code for a program which tests various features of the \-M\-E405/\-M\-E507/\-Free\-R\-T\-O\-S software package. \-Tests include sending data from tasks to other tasks by several means and checking for errors in transmission; creating large numbers of tasks and getting them to all run at the same time; and testing time stamps by measuring the frequency of signals sent by a signal generator.
+
+\-Revisions\-: \begin{DoxyItemize}
+\item 09-\/30-\/2012 \-J\-R\-R \-Original file was a one-\/file demonstration with two tasks \item 10-\/05-\/2012 \-J\-R\-R \-Split into multiple files, one for each task plus a main one \item 10-\/30-\/2012 \-J\-R\-R \-A hopefully somewhat stable version with global queue pointers and the new operator used for most memory allocation \item 11-\/04-\/2012 \-J\-R\-R \-Free\-R\-T\-O\-S \-Swoop demo program changed to a sweet test suite\end{DoxyItemize}
+\-License\-: \-This file is copyright 2012 by \-J\-R \-Ridgely and released under the \-Lesser \-G\-N\-U \-Public \-License, version 2. \-It intended for educational use only, but its use is not limited thereto. 
+
+\-Definition in file \hyperlink{test__main_8cpp_source}{test\-\_\-main.\-cpp}.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{test__main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!main@{main}}
+\index{main@{main}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf main} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{test__main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}
+\-The main function sets up the \-R\-T\-O\-S. \-Some test tasks are created. \-Then the scheduler is started up; the scheduler runs until power is turned off or there's a reset. \begin{DoxyReturn}{\-Returns}
+\-This is a real-\/time microcontroller program which doesn't return. \-Ever. 
+\end{DoxyReturn}
+
+
+\-Definition at line 132 of file test\-\_\-main.\-cpp.
+
+
+
+\-References brake\-\_\-1, brake\-\_\-2, p\-\_\-glob\-\_\-of\-\_\-probs, p\-\_\-queue\-\_\-1, p\-\_\-rate\-\_\-1, p\-\_\-share\-\_\-1, pot\-\_\-1, pot\-\_\-2, power\-\_\-1, power\-\_\-2, and print\-\_\-ser\-\_\-queue.
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{test__main_8cpp_ac332aa182be3f396aab006e2a1223a8d}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!brake\-\_\-1@{brake\-\_\-1}}
+\index{brake\-\_\-1@{brake\-\_\-1}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{brake\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf brake\-\_\-1}}}\label{test__main_8cpp_ac332aa182be3f396aab006e2a1223a8d}
+\-This shared data item allows a brake bool to be posted by user task and read by the motor task. 
+
+\-Definition at line 97 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{test__main_8cpp_a97c4fd12a21fba2f57e184c9132f2a80}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!brake\-\_\-2@{brake\-\_\-2}}
+\index{brake\-\_\-2@{brake\-\_\-2}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{brake\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf brake\-\_\-2}}}\label{test__main_8cpp_a97c4fd12a21fba2f57e184c9132f2a80}
+\-This shared data item allows a break bool to be posted by user task and read by the motor task. 
+
+\-Definition at line 102 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{test__main_8cpp_a6dd5794690e811f62bce8432acff99a0}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!\-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S@{\-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S}}
+\index{\-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S@{\-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{\-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S}]{\setlength{\rightskip}{0pt plus 5cm}const uint8\-\_\-t {\bf \-N\-\_\-\-M\-U\-L\-T\-I\-\_\-\-T\-A\-S\-K\-S} = 4}}\label{test__main_8cpp_a6dd5794690e811f62bce8432acff99a0}
+\-This is the number of tasks which will be instantiated from the task\-\_\-multi class. \-These tasks don't to a whole lot except use up processor time and memory space in order to test how well the program works with lots of tasks. 
+
+\-Definition at line 58 of file test\-\_\-main.\-cpp.
+
+\hypertarget{test__main_8cpp_a72ac6f1f6a1b9cb1edc7836f31af85b5}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!p\-\_\-glob\-\_\-of\-\_\-probs@{p\-\_\-glob\-\_\-of\-\_\-probs}}
+\index{p\-\_\-glob\-\_\-of\-\_\-probs@{p\-\_\-glob\-\_\-of\-\_\-probs}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{p\-\_\-glob\-\_\-of\-\_\-probs}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t$\ast$ {\bf p\-\_\-glob\-\_\-of\-\_\-probs}}}\label{test__main_8cpp_a72ac6f1f6a1b9cb1edc7836f31af85b5}
+\-This global variable will be written by the source task and read by the sink task. \-We expect the process to be corrupted by context switches now and then. 
+
+\-Definition at line 117 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{test__main_8cpp_a943b100cc398890af64c8c00626935cd}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!p\-\_\-queue\-\_\-1@{p\-\_\-queue\-\_\-1}}
+\index{p\-\_\-queue\-\_\-1@{p\-\_\-queue\-\_\-1}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{p\-\_\-queue\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}frt\-\_\-queue$<$uint32\-\_\-t$>$$\ast$ {\bf p\-\_\-queue\-\_\-1}}}\label{test__main_8cpp_a943b100cc398890af64c8c00626935cd}
+\-This queue sends data from the source task to the sink task. 
+
+\-Definition at line 77 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{test__main_8cpp_ac174d5bcd10a2ba8775bab06712b7ce8}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!p\-\_\-rate\-\_\-1@{p\-\_\-rate\-\_\-1}}
+\index{p\-\_\-rate\-\_\-1@{p\-\_\-rate\-\_\-1}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{p\-\_\-rate\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$float$>$$\ast$ {\bf p\-\_\-rate\-\_\-1}}}\label{test__main_8cpp_ac174d5bcd10a2ba8775bab06712b7ce8}
+\-This shared data item is used by the time rate measurement task to make its measurements of how fast something is happening available to other tasks. 
+
+\-Definition at line 122 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{test__main_8cpp_a6e36343e3fbd1317e9bbbdfee0691141}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!p\-\_\-share\-\_\-1@{p\-\_\-share\-\_\-1}}
+\index{p\-\_\-share\-\_\-1@{p\-\_\-share\-\_\-1}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{p\-\_\-share\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$uint32\-\_\-t$>$$\ast$ {\bf p\-\_\-share\-\_\-1}}}\label{test__main_8cpp_a6e36343e3fbd1317e9bbbdfee0691141}
+\-This shared data item allows a value to be posted by the source task and read by the sink task. 
+
+\-Definition at line 82 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{test__main_8cpp_aa5a892890ce4839648694e817fbddfd3}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!pot\-\_\-1@{pot\-\_\-1}}
+\index{pot\-\_\-1@{pot\-\_\-1}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{pot\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf pot\-\_\-1}}}\label{test__main_8cpp_aa5a892890ce4839648694e817fbddfd3}
+\-This shared data item determines if motor task reads from the potentiometer. \-Set by user task and read by the motor task. 
+
+\-Definition at line 107 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), task\-\_\-user\-::motor\-\_\-menu(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{test__main_8cpp_a67de327568f25bf830e7d71505443de8}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!pot\-\_\-2@{pot\-\_\-2}}
+\index{pot\-\_\-2@{pot\-\_\-2}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{pot\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf pot\-\_\-2}}}\label{test__main_8cpp_a67de327568f25bf830e7d71505443de8}
+\-This shared data item determines if motor task reads from the potentiometer. \-Set by user task and read by the motor task. 
+
+\-Definition at line 112 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), task\-\_\-user\-::motor\-\_\-menu(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{test__main_8cpp_af4072aaf6ada6eb77990a94e7635f3cf}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!power\-\_\-1@{power\-\_\-1}}
+\index{power\-\_\-1@{power\-\_\-1}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{power\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int16\-\_\-t$>$$\ast$ {\bf power\-\_\-1}}}\label{test__main_8cpp_af4072aaf6ada6eb77990a94e7635f3cf}
+\-This shared data item allows a power value to be posted by user task and read by the motor task. 
+
+\-Definition at line 87 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{test__main_8cpp_a083156cd9b0019a19d58e68339029490}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!power\-\_\-2@{power\-\_\-2}}
+\index{power\-\_\-2@{power\-\_\-2}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{power\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int16\-\_\-t$>$$\ast$ {\bf power\-\_\-2}}}\label{test__main_8cpp_a083156cd9b0019a19d58e68339029490}
+\-This shared data item allows a power value to be posted by user task and read by the motor task. 
+
+\-Definition at line 92 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{test__main_8cpp_a0f3e0982ec5df30e2339e7162f60a1d6}{\index{test\-\_\-main.\-cpp@{test\-\_\-main.\-cpp}!print\-\_\-ser\-\_\-queue@{print\-\_\-ser\-\_\-queue}}
+\index{print\-\_\-ser\-\_\-queue@{print\-\_\-ser\-\_\-queue}!test_main.cpp@{test\-\_\-main.\-cpp}}
+\subsubsection[{print\-\_\-ser\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}frt\-\_\-text\-\_\-queue$\ast$ {\bf print\-\_\-ser\-\_\-queue}}}\label{test__main_8cpp_a0f3e0982ec5df30e2339e7162f60a1d6}
+\-This is a print queue, descended from base\-\_\-text\-\_\-serial so that things can be printed into the queue using the \char`\"{}$<$$<$\char`\"{} operator and they'll come out the other end as a stream of characters. \-It's used by tasks that send things to the user interface task to be printed. 
+
+\-Definition at line 73 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::run().
+

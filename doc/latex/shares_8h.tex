@@ -1,0 +1,163 @@
+\hypertarget{shares_8h}{\section{shares.\-h \-File \-Reference}
+\label{shares_8h}\index{shares.\-h@{shares.\-h}}
+}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+frt\-\_\-text\-\_\-queue $\ast$ \hyperlink{shares_8h_a0f3e0982ec5df30e2339e7162f60a1d6}{print\-\_\-ser\-\_\-queue}
+\item 
+frt\-\_\-queue$<$ uint32\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a943b100cc398890af64c8c00626935cd}{p\-\_\-queue\-\_\-1}
+\item 
+shared\-\_\-data$<$ uint32\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a6e36343e3fbd1317e9bbbdfee0691141}{p\-\_\-share\-\_\-1}
+\item 
+shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}{power\-\_\-1}
+\item 
+shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a083156cd9b0019a19d58e68339029490}{power\-\_\-2}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_ac332aa182be3f396aab006e2a1223a8d}{brake\-\_\-1}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_a97c4fd12a21fba2f57e184c9132f2a80}{brake\-\_\-2}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_aa5a892890ce4839648694e817fbddfd3}{pot\-\_\-1}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_a67de327568f25bf830e7d71505443de8}{pot\-\_\-2}
+\item 
+uint32\-\_\-t $\ast$ \hyperlink{shares_8h_a72ac6f1f6a1b9cb1edc7836f31af85b5}{p\-\_\-glob\-\_\-of\-\_\-probs}
+\item 
+shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{shares_8h_ac174d5bcd10a2ba8775bab06712b7ce8}{p\-\_\-rate\-\_\-1}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This file contains extern declarations for queues and other inter-\/task data communication objects used in a \-M\-E405/507/\-Free\-R\-T\-O\-S project.
+
+\-Revisions\-: \begin{DoxyItemize}
+\item 09-\/30-\/2012 \-J\-R\-R \-Original file was a one-\/file demonstration with two tasks \item 10-\/05-\/2012 \-J\-R\-R \-Split into multiple files, one for each task plus a main one \item 10-\/29-\/2012 \-J\-R\-R \-Reorganized with global queue and shared data references\end{DoxyItemize}
+\-License\-: \-This file is copyright 2012 by \-J\-R \-Ridgely and released under the \-Lesser \-G\-N\-U \-Public \-License, version 2. \-It intended for educational use only, but its use is not limited thereto. 
+
+\-Definition in file \hyperlink{shares_8h_source}{shares.\-h}.
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{shares_8h_ac332aa182be3f396aab006e2a1223a8d}{\index{shares.\-h@{shares.\-h}!brake\-\_\-1@{brake\-\_\-1}}
+\index{brake\-\_\-1@{brake\-\_\-1}!shares.h@{shares.\-h}}
+\subsubsection[{brake\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf brake\-\_\-1}}}\label{shares_8h_ac332aa182be3f396aab006e2a1223a8d}
+\-This shared data item allows a brake bool to be posted by user task and read by the motor task. 
+
+\-Definition at line 97 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{shares_8h_a97c4fd12a21fba2f57e184c9132f2a80}{\index{shares.\-h@{shares.\-h}!brake\-\_\-2@{brake\-\_\-2}}
+\index{brake\-\_\-2@{brake\-\_\-2}!shares.h@{shares.\-h}}
+\subsubsection[{brake\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf brake\-\_\-2}}}\label{shares_8h_a97c4fd12a21fba2f57e184c9132f2a80}
+\-This shared data item allows a break bool to be posted by user task and read by the motor task. 
+
+\-Definition at line 102 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{shares_8h_a72ac6f1f6a1b9cb1edc7836f31af85b5}{\index{shares.\-h@{shares.\-h}!p\-\_\-glob\-\_\-of\-\_\-probs@{p\-\_\-glob\-\_\-of\-\_\-probs}}
+\index{p\-\_\-glob\-\_\-of\-\_\-probs@{p\-\_\-glob\-\_\-of\-\_\-probs}!shares.h@{shares.\-h}}
+\subsubsection[{p\-\_\-glob\-\_\-of\-\_\-probs}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t$\ast$ {\bf p\-\_\-glob\-\_\-of\-\_\-probs}}}\label{shares_8h_a72ac6f1f6a1b9cb1edc7836f31af85b5}
+\-This global variable will be written by the source task and read by the sink task. \-We expect the process to be corrupted by context switches now and then. 
+
+\-Definition at line 117 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{shares_8h_a943b100cc398890af64c8c00626935cd}{\index{shares.\-h@{shares.\-h}!p\-\_\-queue\-\_\-1@{p\-\_\-queue\-\_\-1}}
+\index{p\-\_\-queue\-\_\-1@{p\-\_\-queue\-\_\-1}!shares.h@{shares.\-h}}
+\subsubsection[{p\-\_\-queue\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}frt\-\_\-queue$<$uint32\-\_\-t$>$$\ast$ {\bf p\-\_\-queue\-\_\-1}}}\label{shares_8h_a943b100cc398890af64c8c00626935cd}
+\-This queue sends data from the source task to the sink task. 
+
+\-Definition at line 77 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{shares_8h_ac174d5bcd10a2ba8775bab06712b7ce8}{\index{shares.\-h@{shares.\-h}!p\-\_\-rate\-\_\-1@{p\-\_\-rate\-\_\-1}}
+\index{p\-\_\-rate\-\_\-1@{p\-\_\-rate\-\_\-1}!shares.h@{shares.\-h}}
+\subsubsection[{p\-\_\-rate\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$float$>$$\ast$ {\bf p\-\_\-rate\-\_\-1}}}\label{shares_8h_ac174d5bcd10a2ba8775bab06712b7ce8}
+\-This shared data item is used by the time rate measurement task to make its measurements of how fast something is happening available to other tasks. 
+
+\-Definition at line 122 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{shares_8h_a6e36343e3fbd1317e9bbbdfee0691141}{\index{shares.\-h@{shares.\-h}!p\-\_\-share\-\_\-1@{p\-\_\-share\-\_\-1}}
+\index{p\-\_\-share\-\_\-1@{p\-\_\-share\-\_\-1}!shares.h@{shares.\-h}}
+\subsubsection[{p\-\_\-share\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$uint32\-\_\-t$>$$\ast$ {\bf p\-\_\-share\-\_\-1}}}\label{shares_8h_a6e36343e3fbd1317e9bbbdfee0691141}
+\-This shared data item allows a value to be posted by the source task and read by the sink task. 
+
+\-Definition at line 82 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main().
+
+\hypertarget{shares_8h_aa5a892890ce4839648694e817fbddfd3}{\index{shares.\-h@{shares.\-h}!pot\-\_\-1@{pot\-\_\-1}}
+\index{pot\-\_\-1@{pot\-\_\-1}!shares.h@{shares.\-h}}
+\subsubsection[{pot\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf pot\-\_\-1}}}\label{shares_8h_aa5a892890ce4839648694e817fbddfd3}
+\-This shared data item determines if motor task reads from the potentiometer. \-Set by user task and read by the motor task. 
+
+\-Definition at line 107 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), task\-\_\-user\-::motor\-\_\-menu(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{shares_8h_a67de327568f25bf830e7d71505443de8}{\index{shares.\-h@{shares.\-h}!pot\-\_\-2@{pot\-\_\-2}}
+\index{pot\-\_\-2@{pot\-\_\-2}!shares.h@{shares.\-h}}
+\subsubsection[{pot\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf pot\-\_\-2}}}\label{shares_8h_a67de327568f25bf830e7d71505443de8}
+\-This shared data item determines if motor task reads from the potentiometer. \-Set by user task and read by the motor task. 
+
+\-Definition at line 112 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), task\-\_\-user\-::motor\-\_\-menu(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}{\index{shares.\-h@{shares.\-h}!power\-\_\-1@{power\-\_\-1}}
+\index{power\-\_\-1@{power\-\_\-1}!shares.h@{shares.\-h}}
+\subsubsection[{power\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int16\-\_\-t$>$$\ast$ {\bf power\-\_\-1}}}\label{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}
+\-This shared data item allows a power value to be posted by user task and read by the motor task. 
+
+\-Definition at line 87 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{shares_8h_a083156cd9b0019a19d58e68339029490}{\index{shares.\-h@{shares.\-h}!power\-\_\-2@{power\-\_\-2}}
+\index{power\-\_\-2@{power\-\_\-2}!shares.h@{shares.\-h}}
+\subsubsection[{power\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int16\-\_\-t$>$$\ast$ {\bf power\-\_\-2}}}\label{shares_8h_a083156cd9b0019a19d58e68339029490}
+\-This shared data item allows a power value to be posted by user task and read by the motor task. 
+
+\-Definition at line 92 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+
+\hypertarget{shares_8h_a0f3e0982ec5df30e2339e7162f60a1d6}{\index{shares.\-h@{shares.\-h}!print\-\_\-ser\-\_\-queue@{print\-\_\-ser\-\_\-queue}}
+\index{print\-\_\-ser\-\_\-queue@{print\-\_\-ser\-\_\-queue}!shares.h@{shares.\-h}}
+\subsubsection[{print\-\_\-ser\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}frt\-\_\-text\-\_\-queue$\ast$ {\bf print\-\_\-ser\-\_\-queue}}}\label{shares_8h_a0f3e0982ec5df30e2339e7162f60a1d6}
+\-This is a print queue, descended from base\-\_\-text\-\_\-serial so that things can be printed into the queue using the \char`\"{}$<$$<$\char`\"{} operator and they'll come out the other end as a stream of characters. \-It's used by tasks that send things to the user interface task to be printed. 
+
+\-Definition at line 73 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by main(), and task\-\_\-user\-::run().
+

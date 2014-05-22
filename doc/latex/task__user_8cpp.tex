@@ -1,0 +1,36 @@
+\hypertarget{task__user_8cpp}{\section{task\-\_\-user.\-cpp \-File \-Reference}
+\label{task__user_8cpp}\index{task\-\_\-user.\-cpp@{task\-\_\-user.\-cpp}}
+}
+{\ttfamily \#include $<$avr/io.\-h$>$}\*
+{\ttfamily \#include $<$avr/wdt.\-h$>$}\*
+{\ttfamily \#include \char`\"{}n\-R\-F24\-L01\-\_\-text.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}task\-\_\-user.\-h\char`\"{}}\*
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+const port\-Tick\-Type \hyperlink{task__user_8cpp_a80f7a5c45b5679c45dd218506ab058f0}{ticks\-\_\-to\-\_\-delay} = ((config\-T\-I\-C\-K\-\_\-\-R\-A\-T\-E\-\_\-\-H\-Z / 1000) $\ast$ 5)
+\item 
+\hypertarget{task__user_8cpp_afe677f502b7bc1a8013d070cc4b1fd04}{bool \hyperlink{task__user_8cpp_afe677f502b7bc1a8013d070cc4b1fd04}{motor\-\_\-select}}\label{task__user_8cpp_afe677f502b7bc1a8013d070cc4b1fd04}
+
+\begin{DoxyCompactList}\small\item\em \-Determines which motor is being selected in the user interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This file contains source code for a user interface task for a \-M\-E507/\-Free\-R\-T\-O\-S test suite.
+
+\-Revisions\-: \begin{DoxyItemize}
+\item 09-\/30-\/2012 \-J\-R\-R \-Original file was a one-\/file demonstration with two tasks \item 10-\/05-\/2012 \-J\-R\-R \-Split into multiple files, one for each task \item 10-\/25-\/2012 \-J\-R\-R \-Changed to a more fully \-C++ version with class \hyperlink{classtask__user}{task\-\_\-user} \item 11-\/04-\/2012 \-J\-R\-R \-Modified from the data acquisition example to the test suite\end{DoxyItemize}
+\-License\-: \-This file is copyright 2012 by \-J\-R \-Ridgely and released under the \-Lesser \-G\-N\-U \-Public \-License, version 2. \-It intended for educational use only, but its use is not limited thereto. 
+
+\-Definition in file \hyperlink{task__user_8cpp_source}{task\-\_\-user.\-cpp}.
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{task__user_8cpp_a80f7a5c45b5679c45dd218506ab058f0}{\index{task\-\_\-user.\-cpp@{task\-\_\-user.\-cpp}!ticks\-\_\-to\-\_\-delay@{ticks\-\_\-to\-\_\-delay}}
+\index{ticks\-\_\-to\-\_\-delay@{ticks\-\_\-to\-\_\-delay}!task_user.cpp@{task\-\_\-user.\-cpp}}
+\subsubsection[{ticks\-\_\-to\-\_\-delay}]{\setlength{\rightskip}{0pt plus 5cm}const port\-Tick\-Type {\bf ticks\-\_\-to\-\_\-delay} = ((config\-T\-I\-C\-K\-\_\-\-R\-A\-T\-E\-\_\-\-H\-Z / 1000) $\ast$ 5)}}\label{task__user_8cpp_a80f7a5c45b5679c45dd218506ab058f0}
+\-This constant sets how many \-R\-T\-O\-S ticks the task delays if the user's not talking. \-The duration is calculated to be about 5 ms. 
+
+\-Definition at line 39 of file task\-\_\-user.\-cpp.
+

@@ -1,0 +1,222 @@
+\hypertarget{classtask__user}{\section{task\-\_\-user \-Class \-Reference}
+\label{classtask__user}\index{task\-\_\-user@{task\-\_\-user}}
+}
+
+
+{\ttfamily \#include $<$task\-\_\-user.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtask__user_a3aba77563b375bb14838800608da48bc}{task\-\_\-user} (const char $\ast$, unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E, size\-\_\-t, emstream $\ast$)
+\item 
+void \hyperlink{classtask__user_adca6429d57be25e8d411414fc8ad75af}{run} (void)
+\item 
+void \hyperlink{classtask__user_a78170e5ebe8dca1ce0a5a09c507399f1}{print\-\_\-status} (emstream \&)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classtask__user_a75475060f83bae1e44bcc8a5c34015c7}{print\-\_\-help\-\_\-message} (void)
+\item 
+void \hyperlink{classtask__user_a105bebbd9cb1031154c3dfc3662db4a0}{show\-\_\-status} (void)
+\item 
+void \hyperlink{classtask__user_a62e9a23d2a052ef1c34ef4c6f1152032}{motor\-\_\-menu} (void)
+\item 
+void \hyperlink{classtask__user_aab1a6f3f0ea7acce28c845a0cf992e6d}{motor\-\_\-settings} (void)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+emstream $\ast$ \hyperlink{classtask__user_a04ed5c2b4d7c9a1530bde6f217e01681}{p\-\_\-serial}
+\item 
+uint32\-\_\-t \hyperlink{classtask__user_ac85973422902084fc9a4692250be32fe}{runs}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This task reads measurements that were taken by the data acquisition task in task\-\_\-daq.$\ast$ and puts those measurements into a queue. 
+
+\-Definition at line 57 of file task\-\_\-user.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classtask__user_a3aba77563b375bb14838800608da48bc}{\index{task\-\_\-user@{task\-\_\-user}!task\-\_\-user@{task\-\_\-user}}
+\index{task\-\_\-user@{task\-\_\-user}!task_user@{task\-\_\-user}}
+\subsubsection[{task\-\_\-user}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task\-\_\-user\-::task\-\_\-user} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{a\-\_\-name, }
+\item[{unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E}]{a\-\_\-priority, }
+\item[{size\-\_\-t}]{a\-\_\-stack\-\_\-size, }
+\item[{emstream $\ast$}]{p\-\_\-ser\-\_\-dev}
+\end{DoxyParamCaption}
+)}}\label{classtask__user_a3aba77563b375bb14838800608da48bc}
+\-This constructor creates a new data acquisition task. \-Its main job is to call the parent class's constructor which does most of the work. 
+\begin{DoxyParams}{\-Parameters}
+{\em a\-\_\-name} & \-A character string which will be the name of this task \\
+\hline
+{\em a\-\_\-priority} & \-The priority at which this task will initially run (default\-: 0) \\
+\hline
+{\em a\-\_\-stack\-\_\-size} & \-The size of this task's stack in bytes (default\-: config\-M\-I\-N\-I\-M\-A\-L\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-I\-Z\-E) \\
+\hline
+{\em p\-\_\-ser\-\_\-dev} & \-Pointer to a serial device (port, radio, \-S\-D card, etc.) which can be used by this task to communicate (default\-: \-N\-U\-L\-L) \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 55 of file task\-\_\-user.\-cpp.
+
+
+
+\-References p\-\_\-serial, and runs.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classtask__user_a62e9a23d2a052ef1c34ef4c6f1152032}{\index{task\-\_\-user@{task\-\_\-user}!motor\-\_\-menu@{motor\-\_\-menu}}
+\index{motor\-\_\-menu@{motor\-\_\-menu}!task_user@{task\-\_\-user}}
+\subsubsection[{motor\-\_\-menu}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-user\-::motor\-\_\-menu} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classtask__user_a62e9a23d2a052ef1c34ef4c6f1152032}
+\-This method prints out the diferent options for the motor menu imlpmented in \hyperlink{classtask__user_adca6429d57be25e8d411414fc8ad75af}{run()}. \-It shows the possible inputs it accepts as well as what they do. 
+
+\-Definition at line 241 of file task\-\_\-user.\-cpp.
+
+
+
+\-References motor\-\_\-select, p\-\_\-serial, pot\-\_\-1, and pot\-\_\-2.
+
+
+
+\-Referenced by motor\-\_\-settings(), and run().
+
+\hypertarget{classtask__user_aab1a6f3f0ea7acce28c845a0cf992e6d}{\index{task\-\_\-user@{task\-\_\-user}!motor\-\_\-settings@{motor\-\_\-settings}}
+\index{motor\-\_\-settings@{motor\-\_\-settings}!task_user@{task\-\_\-user}}
+\subsubsection[{motor\-\_\-settings}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-user\-::motor\-\_\-settings} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classtask__user_aab1a6f3f0ea7acce28c845a0cf992e6d}
+\-This function is the implementation of the motor menu. \-Given correct inputs it will let you change motor, change pot state, change power settings, run the brakes, and switch back to the main menu. \-Incorrect input are more or less ignored 
+
+\-Definition at line 261 of file task\-\_\-user.\-cpp.
+
+
+
+\-References brake\-\_\-1, brake\-\_\-2, motor\-\_\-menu(), motor\-\_\-select, p\-\_\-serial, pot\-\_\-1, pot\-\_\-2, power\-\_\-1, and power\-\_\-2.
+
+
+
+\-Referenced by run().
+
+\hypertarget{classtask__user_a75475060f83bae1e44bcc8a5c34015c7}{\index{task\-\_\-user@{task\-\_\-user}!print\-\_\-help\-\_\-message@{print\-\_\-help\-\_\-message}}
+\index{print\-\_\-help\-\_\-message@{print\-\_\-help\-\_\-message}!task_user@{task\-\_\-user}}
+\subsubsection[{print\-\_\-help\-\_\-message}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-user\-::print\-\_\-help\-\_\-message} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classtask__user_a75475060f83bae1e44bcc8a5c34015c7}
+\-This method prints out the diferent options for the main menu imlpmented in \hyperlink{classtask__user_adca6429d57be25e8d411414fc8ad75af}{run()}. \-It shows the possible inputs it accepts as well as what they do. 
+
+\-Definition at line 165 of file task\-\_\-user.\-cpp.
+
+
+
+\-References p\-\_\-serial.
+
+
+
+\-Referenced by run().
+
+\hypertarget{classtask__user_a78170e5ebe8dca1ce0a5a09c507399f1}{\index{task\-\_\-user@{task\-\_\-user}!print\-\_\-status@{print\-\_\-status}}
+\index{print\-\_\-status@{print\-\_\-status}!task_user@{task\-\_\-user}}
+\subsubsection[{print\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-user\-::print\-\_\-status} (
+\begin{DoxyParamCaption}
+\item[{emstream \&}]{ser\-\_\-thing}
+\end{DoxyParamCaption}
+)}}\label{classtask__user_a78170e5ebe8dca1ce0a5a09c507399f1}
+\-This method prints information about the status of this task. \-It is called by the overloaded \char`\"{}$<$$<$\char`\"{} operator so that when the task prints itself to a serial device, whatever this method wants printed gets printed. 
+\begin{DoxyParams}{\-Parameters}
+{\em ser\-\_\-thing} & \-The serial device to which information will be printed \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 228 of file task\-\_\-user.\-cpp.
+
+
+
+\-References runs.
+
+\hypertarget{classtask__user_adca6429d57be25e8d411414fc8ad75af}{\index{task\-\_\-user@{task\-\_\-user}!run@{run}}
+\index{run@{run}!task_user@{task\-\_\-user}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-user\-::run} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classtask__user_adca6429d57be25e8d411414fc8ad75af}
+\-This run method is called by the \-R\-T\-O\-S and contains a loop in which the task checks for user input and characters in the print queue, dealing with each in the appropriate manner.
+
+\-This task is the main loop that runs the menu. \-You can chose options from the main menu, including printing the time, version, and stack, or you can go to the motor menu implemented in \hyperlink{classtask__user_a62e9a23d2a052ef1c34ef4c6f1152032}{motor\-\_\-menu()} 
+
+\-Definition at line 76 of file task\-\_\-user.\-cpp.
+
+
+
+\-References motor\-\_\-menu(), motor\-\_\-settings(), p\-\_\-serial, print\-\_\-help\-\_\-message(), print\-\_\-ser\-\_\-queue, runs, and show\-\_\-status().
+
+\hypertarget{classtask__user_a105bebbd9cb1031154c3dfc3662db4a0}{\index{task\-\_\-user@{task\-\_\-user}!show\-\_\-status@{show\-\_\-status}}
+\index{show\-\_\-status@{show\-\_\-status}!task_user@{task\-\_\-user}}
+\subsubsection[{show\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-user\-::show\-\_\-status} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classtask__user_a105bebbd9cb1031154c3dfc3662db4a0}
+\-This method displays information about the status of the system, including \begin{DoxyItemize}
+\item \-The name and version of the program \item \-The name, status, priority, and free stack space of each task \item \-Processor cycles used by each task \item \-Amount of heap space free and setting of \-R\-T\-O\-S tick timer \end{DoxyItemize}
+
+
+\-Definition at line 185 of file task\-\_\-user.\-cpp.
+
+
+
+\-References p\-\_\-serial, and \-P\-R\-O\-G\-R\-A\-M\-\_\-\-V\-E\-R\-S\-I\-O\-N.
+
+
+
+\-Referenced by run().
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classtask__user_a04ed5c2b4d7c9a1530bde6f217e01681}{\index{task\-\_\-user@{task\-\_\-user}!p\-\_\-serial@{p\-\_\-serial}}
+\index{p\-\_\-serial@{p\-\_\-serial}!task_user@{task\-\_\-user}}
+\subsubsection[{p\-\_\-serial}]{\setlength{\rightskip}{0pt plus 5cm}emstream$\ast$ {\bf task\-\_\-user\-::p\-\_\-serial}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classtask__user_a04ed5c2b4d7c9a1530bde6f217e01681}
+\-This pointer allows all the methods in this task to use the serial port, or whatever serial device is being used to communicate with the user. 
+
+\-Definition at line 65 of file task\-\_\-user.\-h.
+
+
+
+\-Referenced by motor\-\_\-menu(), motor\-\_\-settings(), print\-\_\-help\-\_\-message(), run(), show\-\_\-status(), and task\-\_\-user().
+
+\hypertarget{classtask__user_ac85973422902084fc9a4692250be32fe}{\index{task\-\_\-user@{task\-\_\-user}!runs@{runs}}
+\index{runs@{runs}!task_user@{task\-\_\-user}}
+\subsubsection[{runs}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t {\bf task\-\_\-user\-::runs}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classtask__user_ac85973422902084fc9a4692250be32fe}
+\-This variable counts the number of runs through this task's loop. 
+
+\-Definition at line 76 of file task\-\_\-user.\-h.
+
+
+
+\-Referenced by print\-\_\-status(), run(), and task\-\_\-user().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{task__user_8h}{task\-\_\-user.\-h}\item 
+\hyperlink{task__user_8cpp}{task\-\_\-user.\-cpp}\end{DoxyCompactItemize}

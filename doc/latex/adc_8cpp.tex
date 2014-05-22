@@ -1,0 +1,52 @@
+\hypertarget{adc_8cpp}{\section{adc.\-cpp \-File \-Reference}
+\label{adc_8cpp}\index{adc.\-cpp@{adc.\-cpp}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$avr/io.\-h$>$}\*
+{\ttfamily \#include \char`\"{}rs232int.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}adc.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+emstream \& \hyperlink{adc_8cpp_afb33ca9fe94765ee57079e7feb03f975}{operator$<$$<$} (emstream \&serpt, \hyperlink{classadc}{adc} \&a2d)
+\begin{DoxyCompactList}\small\item\em \-This overloaded operator \char`\"{}prints\char`\"{} the \-A/\-D converter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This file contains a very simple \-A/\-D converter driver. \-The driver is hopefully thread safe in \-Free\-R\-T\-O\-S due to the use of a mutex to prevent its use by multiple tasks at the same time. \-There is no protection from priority inversion, however, except for the priority elevation in the mutex.
+
+\-Revisions\-: \begin{DoxyItemize}
+\item 01-\/15-\/2008 \-J\-R\-R \-Original (somewhat useful) file \item 10-\/11-\/2012 \-J\-R\-R \-Less original, more useful file with \-Free\-R\-T\-O\-S mutex added \item 10-\/12-\/2012 \-J\-R\-R \-There was a bug in the mutex code, and it has been fixed\end{DoxyItemize}
+\-License\-: \-This file is copyright 2012 by \-J\-R \-Ridgely and released under the \-Lesser \-G\-N\-U \-Public \-License, version 2. \-It intended for educational use only, but its use is not limited thereto. 
+
+\-Definition in file \hyperlink{adc_8cpp_source}{adc.\-cpp}.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{adc_8cpp_afb33ca9fe94765ee57079e7feb03f975}{\index{adc.\-cpp@{adc.\-cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!adc.cpp@{adc.\-cpp}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}emstream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{emstream \&}]{serpt, }
+\item[{{\bf adc} \&}]{a2d}
+\end{DoxyParamCaption}
+)}}\label{adc_8cpp_afb33ca9fe94765ee57079e7feb03f975}
+
+
+\-This overloaded operator \char`\"{}prints\char`\"{} the \-A/\-D converter. 
+
+{\bfseries \-Details\-:} \-This overloaded operator will return \-A\-D\-M\-U\-X and \-A\-D\-C\-S\-R\-A in binary. 
+\begin{DoxyParams}{\-Parameters}
+{\em serpt} & \-The serial port where the printout will be printed. \\
+\hline
+{\em a2d} & \-The \-A/\-D driver which is being printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A reference to the same serial device that the information is written to. \-This is used to string together things to write with \char`\"{}$<$$<$\char`\"{} operators 
+\end{DoxyReturn}
+
+
+\-Definition at line 120 of file adc.\-cpp.
+

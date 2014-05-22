@@ -1,0 +1,165 @@
+\hypertarget{classmotor__driver}{\section{motor\-\_\-driver \-Class \-Reference}
+\label{classmotor__driver}\index{motor\-\_\-driver@{motor\-\_\-driver}}
+}
+
+
+\-This class runs the motor on the h-\/bridge chip.  
+
+
+
+
+{\ttfamily \#include $<$motor\-\_\-driver.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmotor__driver_a8ae335815e1a1ef23904750562639346}{motor\-\_\-driver} (emstream $\ast$p\-\_\-serial\-\_\-port, volatile uint8\-\_\-t $\ast$p\-\_\-ddr, uint8\-\_\-t ddr\-\_\-mask, volatile uint8\-\_\-t $\ast$pwm, uint8\-\_\-t pwm\-\_\-mask, volatile uint8\-\_\-t $\ast$p\-\_\-port, uint8\-\_\-t enable\-\_\-mask, volatile uint8\-\_\-t $\ast$p\-\_\-tccra, uint8\-\_\-t tccra\-\_\-mask, volatile uint8\-\_\-t $\ast$p\-\_\-tccrb, uint8\-\_\-t tccrb\-\_\-mask, volatile uint16\-\_\-t $\ast$p\-\_\-ocr)
+\begin{DoxyCompactList}\small\item\em \-This constructor sets up a motor driver. \end{DoxyCompactList}\item 
+void \hyperlink{classmotor__driver_ae8f7bd6aa553abf071abcebc876a9e10}{set\-\_\-power} (int16\-\_\-t power)
+\begin{DoxyCompactList}\small\item\em \-This method sets direction and duty cycle of the motor. \end{DoxyCompactList}\item 
+void \hyperlink{classmotor__driver_aa21e7894053cd83968d9e6b2958c9aec}{brake} (void)
+\begin{DoxyCompactList}\small\item\em \-This method stops the motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmotor__driver_a5d94686caee87309fc36257bcab1035f}{emstream $\ast$ \hyperlink{classmotor__driver_a5d94686caee87309fc36257bcab1035f}{ptr\-\_\-to\-\_\-serial}}\label{classmotor__driver_a5d94686caee87309fc36257bcab1035f}
+
+\begin{DoxyCompactList}\small\item\em \-The motor driver class uses this pointer print to the serial port. \end{DoxyCompactList}\item 
+\hypertarget{classmotor__driver_a3c15d9a1839e286d7f5081b471c6f967}{volatile uint16\-\_\-t $\ast$ \hyperlink{classmotor__driver_a3c15d9a1839e286d7f5081b471c6f967}{compare}}\label{classmotor__driver_a3c15d9a1839e286d7f5081b471c6f967}
+
+\begin{DoxyCompactList}\small\item\em \-This points to the compare register. \end{DoxyCompactList}\item 
+\hypertarget{classmotor__driver_a0a51fcc2cd6c747fa6e892c3b00cf575}{volatile uint8\-\_\-t $\ast$ \hyperlink{classmotor__driver_a0a51fcc2cd6c747fa6e892c3b00cf575}{direction}}\label{classmotor__driver_a0a51fcc2cd6c747fa6e892c3b00cf575}
+
+\begin{DoxyCompactList}\small\item\em \-This points to the direction register. \end{DoxyCompactList}\item 
+\hypertarget{classmotor__driver_a3679745ec176df2d78ce091cd2a55589}{uint8\-\_\-t \hyperlink{classmotor__driver_a3679745ec176df2d78ce091cd2a55589}{enable}}\label{classmotor__driver_a3679745ec176df2d78ce091cd2a55589}
+
+\begin{DoxyCompactList}\small\item\em \-Enable pin on h-\/bridge chip. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This class runs the motor on the h-\/bridge chip. 
+
+\-This class takes in several ports and their inputs and masks for a specific motherboard, as well as a serial port. 
+
+\-Definition at line 26 of file motor\-\_\-driver.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classmotor__driver_a8ae335815e1a1ef23904750562639346}{\index{motor\-\_\-driver@{motor\-\_\-driver}!motor\-\_\-driver@{motor\-\_\-driver}}
+\index{motor\-\_\-driver@{motor\-\_\-driver}!motor_driver@{motor\-\_\-driver}}
+\subsubsection[{motor\-\_\-driver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf motor\-\_\-driver\-::motor\-\_\-driver} (
+\begin{DoxyParamCaption}
+\item[{emstream $\ast$}]{p\-\_\-serial\-\_\-port, }
+\item[{volatile uint8\-\_\-t $\ast$}]{p\-\_\-ddr, }
+\item[{uint8\-\_\-t}]{ddr\-\_\-mask, }
+\item[{volatile uint8\-\_\-t $\ast$}]{p\-\_\-pwm, }
+\item[{uint8\-\_\-t}]{pwm\-\_\-mask, }
+\item[{volatile uint8\-\_\-t $\ast$}]{p\-\_\-port, }
+\item[{uint8\-\_\-t}]{enable\-\_\-mask, }
+\item[{volatile uint8\-\_\-t $\ast$}]{p\-\_\-tccra, }
+\item[{uint8\-\_\-t}]{tccra\-\_\-mask, }
+\item[{volatile uint8\-\_\-t $\ast$}]{p\-\_\-tccrb, }
+\item[{uint8\-\_\-t}]{tccrb\-\_\-mask, }
+\item[{volatile uint16\-\_\-t $\ast$}]{p\-\_\-ocr}
+\end{DoxyParamCaption}
+)}}\label{classmotor__driver_a8ae335815e1a1ef23904750562639346}
+
+
+\-This constructor sets up a motor driver. 
+
+{\bfseries \-Details\-:} \-The motor driver is enabled based on parameters. \-The motor initial spins clockwise. 
+\begin{DoxyParams}{\-Parameters}
+{\em p\-\_\-serial\-\_\-port} & \-A pointer to the serial port where debugging info is written. \\
+\hline
+{\em p\-\_\-ddr} & \-A pointer to the \-D\-D\-Rx for \-I\-Nx and \-D\-I\-A\-Gx on h-\/bridge chip. \\
+\hline
+{\em ddr\-\_\-mask} & \-Enable pin settings on h-\/bridge chip. \\
+\hline
+{\em p\-\_\-pwm} & \-A pointer to the \-D\-D\-Rx for pwn pin on h-\/bridge chip. \\
+\hline
+{\em pwm\-\_\-mask} & \-Enable pwm pin on h-\/bridge chip. \\
+\hline
+{\em p\-\_\-port} & \-A pointer to enable h-\/bridge chip. \\
+\hline
+{\em enable\-\_\-mask} & \-A mask for the \-D\-I\-A\-G/\-E\-N pin for h-\/bridge chip. \\
+\hline
+{\em p\-\_\-tccra} & \-A pointer to the timer/counter register \-A. \\
+\hline
+{\em tccra\-\_\-mask} & \-Timer/counter register \-A mask. \\
+\hline
+{\em p\-\_\-tccrb} & \-A pointer to the timer/counter register \-B. \\
+\hline
+{\em tccrb\-\_\-mask} & \-Timer/counter register \-B mask. \\
+\hline
+{\em p\-\_\-ocr} & \-A pointer to the output compare register. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 34 of file motor\-\_\-driver.\-cpp.
+
+
+
+\-References compare, direction, enable, and ptr\-\_\-to\-\_\-serial.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classmotor__driver_aa21e7894053cd83968d9e6b2958c9aec}{\index{motor\-\_\-driver@{motor\-\_\-driver}!brake@{brake}}
+\index{brake@{brake}!motor_driver@{motor\-\_\-driver}}
+\subsubsection[{brake}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf motor\-\_\-driver\-::brake} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classmotor__driver_aa21e7894053cd83968d9e6b2958c9aec}
+
+
+\-This method stops the motor. 
+
+{\bfseries \-Details\-:} \-This method brakes the motor to ground. 
+
+\-Definition at line 86 of file motor\-\_\-driver.\-cpp.
+
+
+
+\-References direction, and enable.
+
+
+
+\-Referenced by task\-\_\-motor\-::run().
+
+\hypertarget{classmotor__driver_ae8f7bd6aa553abf071abcebc876a9e10}{\index{motor\-\_\-driver@{motor\-\_\-driver}!set\-\_\-power@{set\-\_\-power}}
+\index{set\-\_\-power@{set\-\_\-power}!motor_driver@{motor\-\_\-driver}}
+\subsubsection[{set\-\_\-power}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf motor\-\_\-driver\-::set\-\_\-power} (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t}]{power}
+\end{DoxyParamCaption}
+)}}\label{classmotor__driver_ae8f7bd6aa553abf071abcebc876a9e10}
+
+
+\-This method sets direction and duty cycle of the motor. 
+
+{\bfseries \-Details\-:} \-This method determines direction and sets the duty cycle. 
+\begin{DoxyParams}{\-Parameters}
+{\em power} & power setting, negative number reverse motor direction \mbox{[}-\/255, 255\mbox{]}. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 69 of file motor\-\_\-driver.\-cpp.
+
+
+
+\-References compare, direction, and enable.
+
+
+
+\-Referenced by task\-\_\-motor\-::run().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{motor__driver_8h}{motor\-\_\-driver.\-h}\item 
+\hyperlink{motor__driver_8cpp}{motor\-\_\-driver.\-cpp}\end{DoxyCompactItemize}

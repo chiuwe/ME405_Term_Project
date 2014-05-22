@@ -1,0 +1,136 @@
+\hypertarget{classadc}{\section{adc \-Class \-Reference}
+\label{classadc}\index{adc@{adc}}
+}
+
+
+\-This class should run the \-A/\-D converter on an \-A\-V\-R processor.  
+
+
+
+
+{\ttfamily \#include $<$adc.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classadc_af3b8262c08f5fc5ae325a20622883424}{adc} (emstream $\ast$=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-This constructor sets up an \-A/\-D converter. \end{DoxyCompactList}\item 
+uint16\-\_\-t \hyperlink{classadc_a2190a59696a7093e1ea605e998ccf97e}{read\-\_\-once} (uint8\-\_\-t)
+\begin{DoxyCompactList}\small\item\em \-This method takes one \-A/\-D reading from the given channel and returns it. \end{DoxyCompactList}\item 
+uint16\-\_\-t \hyperlink{classadc_a58f1030fe64d3dea4ccd8a2687dd6fce}{read\-\_\-oversampled} (uint8\-\_\-t, uint8\-\_\-t)
+\begin{DoxyCompactList}\small\item\em \-This method finds the average result while guarding against overflow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classadc_a14680b48b723bf1adddd2741ebb18a3e}{emstream $\ast$ \hyperlink{classadc_a14680b48b723bf1adddd2741ebb18a3e}{ptr\-\_\-to\-\_\-serial}}\label{classadc_a14680b48b723bf1adddd2741ebb18a3e}
+
+\begin{DoxyCompactList}\small\item\em \-The \-A\-D\-C class uses this pointer to the serial port to say hello. \end{DoxyCompactList}\item 
+\hypertarget{classadc_a6df75e4965d01b573c088c052e9c80c6}{uint8\-\_\-t \hyperlink{classadc_a6df75e4965d01b573c088c052e9c80c6}{\-A\-D\-M\-U\-X\-\_\-init}}\label{classadc_a6df75e4965d01b573c088c052e9c80c6}
+
+\begin{DoxyCompactList}\small\item\em \-Initial admux value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This class should run the \-A/\-D converter on an \-A\-V\-R processor. 
+
+\-It should have some better comments. \-Yes, this is a {\bfseries subtle} {\bfseries hint}. 
+
+\-Definition at line 45 of file adc.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classadc_af3b8262c08f5fc5ae325a20622883424}{\index{adc@{adc}!adc@{adc}}
+\index{adc@{adc}!adc@{adc}}
+\subsubsection[{adc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf adc\-::adc} (
+\begin{DoxyParamCaption}
+\item[{emstream $\ast$}]{p\-\_\-serial\-\_\-port = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}}\label{classadc_af3b8262c08f5fc5ae325a20622883424}
+
+
+\-This constructor sets up an \-A/\-D converter. 
+
+{\bfseries \-Details\-:} \-The \-A/\-D converter is enabled and the division factor is set to 32. 
+\begin{DoxyParams}{\-Parameters}
+{\em p\-\_\-serial\-\_\-port} & \-A pointer to the serial port where debugging info is written. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 42 of file adc.\-cpp.
+
+
+
+\-References \-A\-D\-M\-U\-X\-\_\-init, and ptr\-\_\-to\-\_\-serial.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classadc_a2190a59696a7093e1ea605e998ccf97e}{\index{adc@{adc}!read\-\_\-once@{read\-\_\-once}}
+\index{read\-\_\-once@{read\-\_\-once}!adc@{adc}}
+\subsubsection[{read\-\_\-once}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf adc\-::read\-\_\-once} (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{ch}
+\end{DoxyParamCaption}
+)}}\label{classadc_a2190a59696a7093e1ea605e998ccf97e}
+
+
+\-This method takes one \-A/\-D reading from the given channel and returns it. 
+
+{\bfseries \-Details\-:} \-This method selects a channel to read and goes through the \-A/\-D conversion. \-This method also guards against time-\/out. 
+\begin{DoxyParams}{\-Parameters}
+{\em ch} & \-The \-A/\-D channel which is being read must be from 0 to 7. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The result of the \-A/\-D conversion. 
+\end{DoxyReturn}
+
+
+\-Definition at line 65 of file adc.\-cpp.
+
+
+
+\-References \-A\-D\-M\-U\-X\-\_\-init.
+
+
+
+\-Referenced by read\-\_\-oversampled(), and task\-\_\-motor\-::run().
+
+\hypertarget{classadc_a58f1030fe64d3dea4ccd8a2687dd6fce}{\index{adc@{adc}!read\-\_\-oversampled@{read\-\_\-oversampled}}
+\index{read\-\_\-oversampled@{read\-\_\-oversampled}!adc@{adc}}
+\subsubsection[{read\-\_\-oversampled}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf adc\-::read\-\_\-oversampled} (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint8\-\_\-t}]{samples}
+\end{DoxyParamCaption}
+)}}\label{classadc_a58f1030fe64d3dea4ccd8a2687dd6fce}
+
+
+\-This method finds the average result while guarding against overflow. 
+
+{\bfseries \-Details\-:} \-This method first checks to see whether the number of samples will threaten overflow and then saturates the number of samples if necessary. \-It then takes the average. 
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & \-A selected channel to read from. \\
+\hline
+{\em samples} & \-The chosen number of samples. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The average readings from a chosen number of samples. 
+\end{DoxyReturn}
+
+
+\-Definition at line 94 of file adc.\-cpp.
+
+
+
+\-References read\-\_\-once().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{adc_8h}{adc.\-h}\item 
+\hyperlink{adc_8cpp}{adc.\-cpp}\end{DoxyCompactItemize}
