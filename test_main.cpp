@@ -129,7 +129,7 @@ int main (void)
 	p_rate_1 = new shared_data<float>;
 
    //make new stepper here
-   Stepper* stepDrive = new Stepper(&ser_port, 200, 2, 3, 1, &DDRC, &PORTC);
+   Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, 3, 4, &DDRC, &PORTC);
 
    //make new task stepper here
    new task_stepper("Stepper1", tskIDLE_PRIORITY + 1, 240, &ser_port, stepDrive, p_speed, p_numSteps);

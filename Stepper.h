@@ -61,9 +61,17 @@ class Stepper {
             uint16_t numberOfSteps,
             uint8_t motorPin1,
             uint8_t motorPin2,
-            uint8_t powerPin,
             volatile uint8_t *p_ddr,
             volatile uint8_t * pPort);
+
+    Stepper(emstream *p_serial_port, 
+                uint16_t numberOfSteps,
+                uint8_t motorPin1,
+                uint8_t motorPin2,
+                uint8_t motorPin3,
+                uint8_t motorPin4,
+                volatile uint8_t *p_ddr,
+                volatile uint8_t * pPort);
 
     // speed setter method:
     void setSpeed(uint64_t whatSpeed);
@@ -87,7 +95,10 @@ class Stepper {
     // motor pin numbers:
     uint8_t motor_pin_1;
     uint8_t motor_pin_2;
-    uint8_t power_pin;
+    uint8_t motor_pin_3;
+    uint8_t motor_pin_4;
+
+    uint8_t pin_count;
     volatile uint8_t * p_port;
     
 };
