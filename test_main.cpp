@@ -49,6 +49,7 @@
 #include "shares.h"                         // Global ('extern') queue declarations
 #include "task_user.h"                      // Header for user interface task
 #include "task_stepper.h"
+#include "task_solenoid.h"
 
 
 /** This is the number of tasks which will be instantiated from the task_multi class.
@@ -86,6 +87,8 @@ shared_data<int64_t>* p_speed;
 
 /* This shared data item tells the stepper motor how manny steps to move*/
 shared_data<int16_t>* p_numSteps;
+
+shared_data<bool>* p_fire;
 
 /** This global variable will be written by the source task and read by the sink task.
  *  We expect the process to be corrupted by context switches now and then.
@@ -127,12 +130,16 @@ int main (void)
    p_numSteps = new shared_data<int16_t>;
 	p_glob_of_probs = new uint32_t;
 	p_rate_1 = new shared_data<float>;
+	p_fire = new shared_data<bool>;
+
 
    //make new stepper here
    Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, 3, 4, &DDRC, &PORTC);
+   Solenoid* solDrive = new Solenoid(&ser_port, 5, &DDRC, &PORTC);
 
    //make new task stepper here
    new task_stepper("Stepper1", tskIDLE_PRIORITY + 1, 240, &ser_port, stepDrive, p_speed, p_numSteps);
+   new task_solenoid("Solenoid1", tskIDLE_PRIORITY + 1, 240, &ser_port, solDrive, p_fire);
 
 	// The user interface is at low priority; it could have been run in the idle task
 	// but it is desired to exercise the RTOS more thoroughly in this test program.

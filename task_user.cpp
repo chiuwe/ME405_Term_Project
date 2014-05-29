@@ -168,7 +168,7 @@ void task_user::print_help_message (void)
 	*p_serial << PMS (" n:  Show the real time NOW") << endl;
 	*p_serial << PMS (" v:  Show program version and setup") << endl;
 	*p_serial << PMS (" s:  Dump all tasks' stacks") << endl;
-	*p_serial << PMS (" m:  Motor settings") << endl;
+	*p_serial << PMS (" m:  Click this for total control. Muahahaha") << endl;
 	*p_serial << PMS (" h:  Print this help message") << endl;
 	*p_serial << PMS ("^C:  Reboot the AVR") << endl;
 }
@@ -242,6 +242,7 @@ void task_user::motor_menu (void)
 {
    *p_serial << PMS ("Motor Settings") << endl;
   	*p_serial << PMS (" w:  Set number of steps (<0 for backwards)") << endl;
+  	*p_serial << PMS (" f:  FIRE!!!!") << endl;
 	*p_serial << PMS (" h:  print this help message") << endl;
 	*p_serial << PMS (" x:  Exit motor setting menu") << endl;
 }
@@ -258,7 +259,6 @@ void task_user::motor_settings (void)
 	int i = 0;
 	int num;
 	bool exit = false;
-	bool pot_state;
 
    while (!exit) {
    	if (p_serial->check_for_char()) {
@@ -281,6 +281,9 @@ void task_user::motor_settings (void)
 				   // TODO: no error checking yet...
 				   num = strtol(buf, NULL, 10);
 				   p_numSteps->put(num);
+					break;
+				case 'f':
+					p_fire->put(true);
 					break;
 				case 'x':
 					*p_serial << PMS ("Returning to main...") << endl;
