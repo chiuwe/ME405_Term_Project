@@ -241,7 +241,6 @@ void task_user::print_status (emstream& ser_thing)
 void task_user::motor_menu (void)
 {
    *p_serial << PMS ("Motor Settings") << endl;
-  	*p_serial << PMS (" s:  Set speed") << endl;
   	*p_serial << PMS (" w:  Set number of steps (<0 for backwards)") << endl;
 	*p_serial << PMS (" h:  print this help message") << endl;
 	*p_serial << PMS (" x:  Exit motor setting menu") << endl;
@@ -282,22 +281,6 @@ void task_user::motor_settings (void)
 				   // TODO: no error checking yet...
 				   num = strtol(buf, NULL, 10);
 				   p_numSteps->put(num);
-					break;
-				case 's':
-				   *p_serial << PMS ("Enter speed: ");
-				   i = 0;
-				   while (!p_serial->check_for_char());
-				   while ((char_in = p_serial->getchar()) != '\r')
-				   {
-				   	buf[i] = char_in;
-				   	i++;
-				   	*p_serial << char_in;
-				   	while (!p_serial->check_for_char());
-				   }
-				   *p_serial << endl;
-				   // TODO: no error checking yet...
-				   num = strtol(buf, NULL, 10);
-				   p_speed->put(num);
 					break;
 				case 'x':
 					*p_serial << PMS ("Returning to main...") << endl;

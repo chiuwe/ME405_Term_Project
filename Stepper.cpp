@@ -75,6 +75,8 @@ Stepper::Stepper( emstream *p_serial_port,
   // setup the pins on the microcontroller:
   *p_ddr |= (1 << motor_pin_1) | (1 << motor_pin_2);
 
+  //hard coded to 20 rotations per minute
+  step_delay = 60L * 1000L / number_of_steps / 20;
 
   DBG(ptr_to_serial, "Motor driver 2 pins constructor OK" << endl);
 }
@@ -104,6 +106,10 @@ Stepper::Stepper( emstream *p_serial_port,
   pin_count = 4;
 
   p_port = pPort;
+
+  //hard coded to 20 rotations per minute
+  step_delay = 60L * 1000L / number_of_steps / 20;
+
   // setup the pins on the microcontroller:
   *p_ddr |= (1 << motor_pin_1) | (1 << motor_pin_2) | (1 << motor_pin_3) | (1 << motor_pin_4);
   DBG(ptr_to_serial, "Motor driver 4 pins constructor OK" << endl);
