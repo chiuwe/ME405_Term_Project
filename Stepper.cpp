@@ -49,6 +49,8 @@ http://www.arduino.cc/en/Tutorial/Stepper
 #include "rs232int.h"                       // Include header for serial port class
 #include "Stepper.h"
 
+#define ROTATIONS_PER_MINUTE 80
+
 /*
  * two-wire constructor.
  * Sets which wires should control the motor.
@@ -76,7 +78,7 @@ Stepper::Stepper( emstream *p_serial_port,
   *p_ddr |= (1 << motor_pin_1) | (1 << motor_pin_2);
 
   //hard coded to 20 rotations per minute
-  step_delay = 60L * 1000L / number_of_steps / 20;
+  step_delay = 60L * 1000L / number_of_steps / ROTATIONS_PER_MINUTE;
 
   DBG(ptr_to_serial, "Motor driver 2 pins constructor OK" << endl);
 }
@@ -108,7 +110,7 @@ Stepper::Stepper( emstream *p_serial_port,
   p_port = pPort;
 
   //hard coded to 20 rotations per minute
-  step_delay = 60L * 1000L / number_of_steps / 20;
+  step_delay = 60L * 1000L / number_of_steps / ROTATIONS_PER_MINUTE;
 
   // setup the pins on the microcontroller:
   *p_ddr |= (1 << motor_pin_1) | (1 << motor_pin_2) | (1 << motor_pin_3) | (1 << motor_pin_4);

@@ -31,6 +31,7 @@
 #include "nRF24L01_text.h"					// Header for Nordic Semi radio module
 
 #include "task_user.h"						// Header for this file
+#define BUFF_LEN 6
 
 
 /** This constant sets how many RTOS ticks the task delays if the user's not talking.
@@ -256,7 +257,7 @@ void task_user::motor_menu (void)
 void task_user::motor_settings (void)
 {
 	char char_in;
-	char buf[4];
+	char buf[BUFF_LEN];
 	int i = 0;
 	int num;
 	bool exit = false;
@@ -264,12 +265,13 @@ void task_user::motor_settings (void)
    while (!exit) {
    	if (p_serial->check_for_char()) {
 			char_in = p_serial->getchar();
-
+			for(i = 0; i < BUFF_LEN; i++)
+				buf[i] = 0;
+			i = 0;
 			switch (char_in)
 			{
 				case 'w':
 				   *p_serial << PMS ("Enter number of steps: ");
-				   i = 0;
 				   while (!p_serial->check_for_char());
 				   while ((char_in = p_serial->getchar()) != '\r')
 				   {
@@ -285,7 +287,6 @@ void task_user::motor_settings (void)
 					break;
 				case 'm':
 				   *p_serial << PMS ("Enter distance: ");
-				   i = 0;
 				   while (!p_serial->check_for_char());
 				   while ((char_in = p_serial->getchar()) != '\r')
 				   {

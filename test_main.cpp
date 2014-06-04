@@ -172,7 +172,7 @@ int main (void)
 
 
    //make new stepper here
-   Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, 3, 4, &DDRC, &PORTC);
+   Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, &DDRC, &PORTC);
    Solenoid* solDrive = new Solenoid(&ser_port, 5, &DDRC, &PORTC);
    motor_driver *p_my_motor_driver1 = new motor_driver(&ser_port, &DDRC, 0x07, &DDRB, 0x40, &PORTC, 0x04, &TCCR1A, 0xA9, &TCCR1B, 0x0B, &OCR1B);
 
