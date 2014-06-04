@@ -27,6 +27,7 @@
 
 #include <avr/io.h>							// Port I/O for SFR's
 #include <avr/wdt.h>							// Watchdog timer header
+#include <util/delay.h>
 
 #include "nRF24L01_text.h"					// Header for Nordic Semi radio module
 
@@ -246,7 +247,8 @@ void task_user::motor_menu (void)
   	*p_serial << PMS (" f:  FIRE!!!!") << endl;
   	*p_serial << PMS (" m:  where should encoder motor go [-4000 to 4000]") << endl;
 	*p_serial << PMS (" h:  print this help message") << endl;
-	*p_serial << PMS (" b:  Zero the motor") << endl;
+	*p_serial << PMS (" b:  Zero the encoder") << endl;
+	*p_serial << PMS (" z:  Zero the stepper") << endl;
 	*p_serial << PMS (" x:  Exit motor setting menu") << endl;
 }
 
@@ -320,6 +322,15 @@ void task_user::motor_settings (void)
 				    pot_1->put(false);
 				    correctPos->put(0);
 				    *p_serial << PMS ("Full Left") << endl;
+					break;
+				case 'z':
+					DDRA |= 1 << PIN7;
+					PORTA |= 1 << PIN7;
+					while((PINA & (1 << PIN7))){
+						_delay_ms(200);
+						*p_serial << PMS ("Limit switch not activated") << endl;
+					}
+					*p_serial << PMS ("Limit Switch Activated!") << endl;
 					break;
 				default:
 					p_serial->putchar (char_in);
