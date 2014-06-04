@@ -33,6 +33,7 @@
 
 #include "task_user.h"						// Header for this file
 #define BUFF_LEN 6
+#define NUM_SQUARES 16
 
 
 /** This constant sets how many RTOS ticks the task delays if the user's not talking.
@@ -249,6 +250,7 @@ void task_user::motor_menu (void)
 	*p_serial << PMS (" h:  print this help message") << endl;
 	*p_serial << PMS (" b:  Zero the encoder") << endl;
 	*p_serial << PMS (" z:  Zero the stepper") << endl;
+	*p_serial << PMS (" c:  Enter Coords [0-3][0-3]") << endl;
 	*p_serial << PMS (" x:  Exit motor setting menu") << endl;
 }
 
@@ -264,6 +266,7 @@ void task_user::motor_settings (void)
 	int i = 0;
 	int num;
 	bool exit = false;
+	int goodInputs[NUM_SQUARES] = {11, 12, 13, 14, 21, 22, 23, 24, 31, 32, 33, 34, 41, 42, 43, 44};
 
    while (!exit) {
    	if (p_serial->check_for_char()) {
@@ -331,6 +334,30 @@ void task_user::motor_settings (void)
 						*p_serial << PMS ("Limit switch not activated") << endl;
 					}
 					*p_serial << PMS ("Limit Switch Activated!") << endl;
+					break;
+				case 'c':
+				   *p_serial << PMS ("Enter Coords: ");
+				   while (!p_serial->check_for_char());
+				   while ((char_in = p_serial->getchar()) != '\r')
+				   {
+				   	buf[i] = char_in;
+				   	i++;
+				   	*p_serial << char_in;
+				   	while (!p_serial->check_for_char());
+				   }
+				   *p_serial << endl;
+				   // TODO: no error checking yet...
+				   num = strtol(buf, NULL, 10);
+				   int i;
+					for(i = 0; i < NUM_SQUARES; i++){
+						if(num == goodInputs[i])
+							break;
+					}
+					if(i == NUM_SQUARES){
+						*p_serial << PMS ("Bad Input") << endl;
+						break;
+					}
+					
 					break;
 				default:
 					p_serial->putchar (char_in);
