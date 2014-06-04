@@ -47,13 +47,13 @@
 #include "frt_queue.h"                      // Header of wrapper for FreeRTOS queues
 #include "frt_shared_data.h"                // Header for thread-safe shared data
 #include "shares.h"                         // Global ('extern') queue declarations
-#include "task_user.h"                      // Header for user interface task
-#include "task_stepper.h"
-#include "task_solenoid.h"
 #include "motor_driver.h"
 #include "task_encoder.h"
 #include "task_motor.h"
+#include "task_user.h"                      // Header for user interface task
 #include "task_P.h"
+#include "task_solenoid.h"
+#include "task_stepper.h"
 
 
 /** This is the number of tasks which will be instantiated from the task_multi class.
@@ -70,14 +70,6 @@ const uint8_t N_MULTI_TASKS = 4;
 // is the type of data in the queue and 'size' is the number of items (not neces-
 // sarily bytes) which the queue can hold
 
-/** This number represents where the motor is rotationally where 4000 is one full rotation
- */
-shared_data<int32_t>* count;
-
-/** TODO: This is the number of errors that have occured while monotoring the encoder
- */
-shared_data<int32_t>* error;
-
 /** This is a print queue, descended from base_text_serial so that things can be 
 *  printed into the queue using the "<<" operator and they'll come out the other
 *  end as a stream of characters. It's used by tasks that send things to the
@@ -85,6 +77,13 @@ shared_data<int32_t>* error;
 */
 frt_text_queue* print_ser_queue;
 
+/** This number represents where the motor is rotationally where 4000 is one full rotation
+ */
+shared_data<int32_t>* count;
+
+/** TODO: This is the number of errors that have occured while monotoring the encoder
+ */
+shared_data<int32_t>* error;
 /** This queue sends data from the source task to the sink task.
  */
 frt_queue<uint32_t>* p_queue_1;
@@ -93,20 +92,6 @@ frt_queue<uint32_t>* p_queue_1;
  *  the sink task.
  */
 shared_data<uint32_t>* p_share_1;
-
-/* This shared data item lets the speed of rotation of the stepper motor*/
-shared_data<int64_t>* p_speed;
-
-/* This shared data item tells the stepper motor how manny steps to move*/
-shared_data<int16_t>* p_numSteps;
-
-shared_data<bool>* p_fire;
-
-/** This global variable will be written by the source task and read by the sink task.
- *  We expect the process to be corrupted by context switches now and then.
- */
-uint32_t* p_glob_of_probs;
-
 
 /** This shared data item allows a power value to be posted by user task and read by the 
  *  motor task.
@@ -126,15 +111,27 @@ shared_data<bool>* brake_1;
 shared_data<bool>* pot_1;
 
 
+/** This global variable will be written by the source task and read by the sink task.
+ *  We expect the process to be corrupted by context switches now and then.
+ */
+uint32_t* p_glob_of_probs;
+
 /** This shared data item is used by the time rate measurement task to make its
  *  measurements of how fast something is happening available to other tasks.
  */
+shared_data<float>* p_rate_1;
 
 shared_data<bool>* isCorrectPos;
 
 shared_data<int32_t>* correctPos;
 
-shared_data<float>* p_rate_1;
+/* This shared data item lets the speed of rotation of the stepper motor*/
+shared_data<int64_t>* p_speed;
+
+/* This shared data item tells the stepper motor how manny steps to move*/
+shared_data<int16_t>* p_numSteps;
+
+shared_data<bool>* p_fire;
 
 
 //=====================================================================================
@@ -160,29 +157,37 @@ int main (void)
 
 	// Create the queues and other shared data items here
 	print_ser_queue = new frt_text_queue (32, &ser_port, 10);
+	count = new shared_data<int32_t>;
+	error = new shared_data<int32_t>;
 	p_queue_1 = new frt_queue<uint32_t> (20);
 	p_share_1 = new shared_data<uint32_t>;
-   p_speed = new shared_data<int64_t>;
-   p_numSteps = new shared_data<int16_t>;
+	power_1 = new shared_data<int16_t>;
+	brake_1 = new shared_data<bool>;
+	pot_1 = new shared_data<bool>;
+	
+	isCorrectPos = new shared_data<bool>;
+	correctPos = new shared_data<int32_t>;
+	
 	p_glob_of_probs = new uint32_t;
 	p_rate_1 = new shared_data<float>;
+    
+    p_speed = new shared_data<int64_t>;
+    p_numSteps = new shared_data<int16_t>;
 	p_fire = new shared_data<bool>;
 
-
-
-
    //make new stepper here
-   Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, &DDRC, &PORTC);
-   Solenoid* solDrive = new Solenoid(&ser_port, 5, &DDRC, &PORTC);
+   Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, &DDRA, &PORTA);
+   Solenoid* solDrive = new Solenoid(&ser_port, 0, &DDRA, &PORTA);
    motor_driver *p_my_motor_driver1 = new motor_driver(&ser_port, &DDRC, 0x07, &DDRB, 0x40, &PORTC, 0x04, &TCCR1A, 0xA9, &TCCR1B, 0x0B, &OCR1B);
 
-   
+
    //make new task stepper here
    new task_stepper("Stepper1", tskIDLE_PRIORITY + 1, 240, &ser_port, stepDrive, p_speed, p_numSteps);
    new task_solenoid("Solenoid1", tskIDLE_PRIORITY + 1, 240, &ser_port, solDrive, p_fire);
    new task_P ("P1", tskIDLE_PRIORITY + 1, 240, &ser_port, p_my_motor_driver1);
    new task_motor ("Motor1", tskIDLE_PRIORITY + 1, 240, 3, p_my_motor_driver1, brake_1, power_1, pot_1, 1, &ser_port);
    new task_encoder ("Encoder1", tskIDLE_PRIORITY + 1, 240, &ser_port, PE4, 0b01010101);
+   new task_encoder ("Encoder2", tskIDLE_PRIORITY + 1, 240, &ser_port, PE5, 0b01010101);
 
 	// The user interface is at low priority; it could have been run in the idle task
 	// but it is desired to exercise the RTOS more thoroughly in this test program.

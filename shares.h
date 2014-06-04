@@ -91,4 +91,7 @@ extern shared_data<bool>* isCorrectPos;
 
 extern shared_data<int32_t>* correctPos;
 
+
+
+
 #endif // _SHARES_H_

@@ -246,6 +246,7 @@ void task_user::motor_menu (void)
   	*p_serial << PMS (" f:  FIRE!!!!") << endl;
   	*p_serial << PMS (" m:  where should encoder motor go [-4000 to 4000]") << endl;
 	*p_serial << PMS (" h:  print this help message") << endl;
+	*p_serial << PMS (" b:  Zero the motor") << endl;
 	*p_serial << PMS (" x:  Exit motor setting menu") << endl;
 }
 
@@ -298,9 +299,14 @@ void task_user::motor_settings (void)
 				   *p_serial << endl;
 				   // TODO: no error checking yet...
 				   num = strtol(buf, NULL, 10);
+				   pot_1->put(false);
 				   correctPos->put(num);
 					break;
 				case 'f':
+					*p_serial << char_in;
+				    *p_serial << endl;
+					*p_serial << "FIRE" << endl;
+
 					p_fire->put(true);
 					break;
 				case 'x':
@@ -309,6 +315,11 @@ void task_user::motor_settings (void)
 				   break;
 				case 'h':
 					motor_menu();
+					break;
+				case 'b':
+				    pot_1->put(false);
+				    correctPos->put(0);
+				    *p_serial << PMS ("Full Left") << endl;
 					break;
 				default:
 					p_serial->putchar (char_in);
