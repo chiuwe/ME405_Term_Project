@@ -50,6 +50,10 @@
 #include "task_user.h"                      // Header for user interface task
 #include "task_stepper.h"
 #include "task_solenoid.h"
+#include "motor_driver.h"
+#include "task_encoder.h"
+#include "task_motor.h"
+#include "task_P.h"
 
 
 /** This is the number of tasks which will be instantiated from the task_multi class.
@@ -65,6 +69,14 @@ const uint8_t N_MULTI_TASKS = 4;
 // the serial text printing queue is 'frt_queue<type> name (size)', where 'type' 
 // is the type of data in the queue and 'size' is the number of items (not neces-
 // sarily bytes) which the queue can hold
+
+/** This number represents where the motor is rotationally where 4000 is one full rotation
+ */
+shared_data<int32_t>* count;
+
+/** TODO: This is the number of errors that have occured while monotoring the encoder
+ */
+shared_data<int32_t>* error;
 
 /** This is a print queue, descended from base_text_serial so that things can be 
 *  printed into the queue using the "<<" operator and they'll come out the other
@@ -95,9 +107,33 @@ shared_data<bool>* p_fire;
  */
 uint32_t* p_glob_of_probs;
 
+
+/** This shared data item allows a power value to be posted by user task and read by the 
+ *  motor task.
+ */
+shared_data<int16_t>* power_1;
+
+
+/** 
+ * an artifact of when this was controled by hardware and software. effectivly useless, though needed for compiling.
+ */
+shared_data<bool>* brake_1;
+
+
+/** 
+ * an artifact of when this was controled by hardware and software. effectivly useless, though needed for compiling.
+ */
+shared_data<bool>* pot_1;
+
+
 /** This shared data item is used by the time rate measurement task to make its
  *  measurements of how fast something is happening available to other tasks.
  */
+
+shared_data<bool>* isCorrectPos;
+
+shared_data<int32_t>* correctPos;
+
 shared_data<float>* p_rate_1;
 
 
@@ -133,13 +169,20 @@ int main (void)
 	p_fire = new shared_data<bool>;
 
 
+
+
    //make new stepper here
    Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, 3, 4, &DDRC, &PORTC);
    Solenoid* solDrive = new Solenoid(&ser_port, 5, &DDRC, &PORTC);
+   motor_driver *p_my_motor_driver1 = new motor_driver(&ser_port, &DDRC, 0x07, &DDRB, 0x40, &PORTC, 0x04, &TCCR1A, 0xA9, &TCCR1B, 0x0B, &OCR1B);
 
+   
    //make new task stepper here
    new task_stepper("Stepper1", tskIDLE_PRIORITY + 1, 240, &ser_port, stepDrive, p_speed, p_numSteps);
    new task_solenoid("Solenoid1", tskIDLE_PRIORITY + 1, 240, &ser_port, solDrive, p_fire);
+   new task_P ("P1", tskIDLE_PRIORITY + 1, 240, &ser_port, p_my_motor_driver1);
+   new task_motor ("Motor1", tskIDLE_PRIORITY + 1, 240, 3, p_my_motor_driver1, brake_1, power_1, pot_1, 1, &ser_port);
+   new task_encoder ("Encoder1", tskIDLE_PRIORITY + 1, 240, &ser_port, PE4, 0b01010101);
 
 	// The user interface is at low priority; it could have been run in the idle task
 	// but it is desired to exercise the RTOS more thoroughly in this test program.

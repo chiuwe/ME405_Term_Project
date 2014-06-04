@@ -38,6 +38,24 @@
 // This queue allows tasks to send characters to the user interface task for display.
 extern frt_text_queue* print_ser_queue;
 
+
+extern shared_data<int32_t>* count;
+
+extern shared_data<int32_t>* error;
+
+extern shared_data<int16_t>* power_1;
+
+
+/*  This shared data item allows a brake bool to be posted by user task and read by the 
+ *  motor task.
+ */
+extern shared_data<bool>* brake_1;
+/*  This shared data item determines if motor task reads from the potentiometer. 
+ *  Set by user task and read by the motor task.
+ */
+extern shared_data<bool>* pot_1;
+
+
 /*  This queue sends data from the source task to the sink task.
  */
 extern frt_queue<uint32_t>* p_queue_1;
@@ -65,5 +83,12 @@ extern uint32_t* p_glob_of_probs;
  *  measurements of how fast something is happening available to other tasks.
  */
 extern shared_data<float>* p_rate_1;
+
+/*
+* Knows if the motor is in the right location, or needs to be moved via task_P
+*/
+extern shared_data<bool>* isCorrectPos;
+
+extern shared_data<int32_t>* correctPos;
 
 #endif // _SHARES_H_

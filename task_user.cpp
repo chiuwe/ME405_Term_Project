@@ -243,6 +243,7 @@ void task_user::motor_menu (void)
    *p_serial << PMS ("Motor Settings") << endl;
   	*p_serial << PMS (" w:  Set number of steps (<0 for backwards)") << endl;
   	*p_serial << PMS (" f:  FIRE!!!!") << endl;
+  	*p_serial << PMS (" m:  where should encoder motor go [-4000 to 4000]") << endl;
 	*p_serial << PMS (" h:  print this help message") << endl;
 	*p_serial << PMS (" x:  Exit motor setting menu") << endl;
 }
@@ -281,6 +282,22 @@ void task_user::motor_settings (void)
 				   // TODO: no error checking yet...
 				   num = strtol(buf, NULL, 10);
 				   p_numSteps->put(num);
+					break;
+				case 'm':
+				   *p_serial << PMS ("Enter distance: ");
+				   i = 0;
+				   while (!p_serial->check_for_char());
+				   while ((char_in = p_serial->getchar()) != '\r')
+				   {
+				   	buf[i] = char_in;
+				   	i++;
+				   	*p_serial << char_in;
+				   	while (!p_serial->check_for_char());
+				   }
+				   *p_serial << endl;
+				   // TODO: no error checking yet...
+				   num = strtol(buf, NULL, 10);
+				   correctPos->put(num);
 					break;
 				case 'f':
 					p_fire->put(true);
