@@ -363,11 +363,11 @@ void task_user::motor_settings (void)
 					switch(num){
 						case 11:
 							correctPos->put(1000); //hard coded number for encoded motor
-							p_numSteps->put(50); //hard coded number for stepper
+							p_numSteps->put(-10); //hard coded number for stepper
 							break;
 						case 12:
-							correctPos->put(1500); //hard coded number for encoded motor
-							p_numSteps->put(30); //hard coded number for stepper
+							correctPos->put(3000); //hard coded number for encoded motor
+							p_numSteps->put(-20); //hard coded number for stepper
 							break;
 						case 13:
 							correctPos->put(0); //hard coded number for encoded motor
