@@ -8,6 +8,10 @@
 #include "task.h"                           // Header for FreeRTOS task functions
 #include "queue.h"                          // Header for FreeRTOS queues
 #include "semphr.h"                         // Header for FreeRTOS semaphores
+#include "frt_queue.h"                      // Header of wrapper for FreeRTOS queues
+#include "frt_shared_data.h"                // Header for thread-safe shared data
+#include "frt_text_queue.h"                 // Header for text queue class
+#include "shares.h"
 
 // library interface description
 class Solenoid {

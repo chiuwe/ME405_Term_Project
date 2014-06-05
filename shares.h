@@ -74,6 +74,10 @@ extern shared_data<int16_t>* p_numSteps;
 /*used to tell the solenoid to release for a bit*/
 extern shared_data<bool>* p_fire;
 
+extern shared_data<bool>* stepperDone;
+
+extern shared_data<bool>* doneFiring;
+
 /*  This global variable will be written by the source task and read by the sink task.
  *  We expect the process to be corrupted by context switches now and then.
  */

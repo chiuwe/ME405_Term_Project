@@ -48,7 +48,6 @@ http://www.arduino.cc/en/Tutorial/Stepper
 
 #include "rs232int.h"                       // Include header for serial port class
 #include "Stepper.h"
-
 #define ROTATIONS_PER_MINUTE 80
 
 /*
@@ -163,6 +162,7 @@ void Stepper::step(int16_t steps_to_move)
     // step the motor to step number 0, 1, 2, or 3:
     stepMotor(step_number % 4);
   }
+  stepperDone->put(true);
 }
 
 /*

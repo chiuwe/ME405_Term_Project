@@ -267,6 +267,7 @@ void task_user::motor_settings (void)
 	int num;
 	bool exit = false;
 	int goodInputs[NUM_SQUARES] = {11, 12, 13, 14, 21, 22, 23, 24, 31, 32, 33, 34, 41, 42, 43, 44};
+	bool motor1Set = false, motor2Set = false;
 
    while (!exit) {
    	if (p_serial->check_for_char()) {
@@ -348,7 +349,7 @@ void task_user::motor_settings (void)
 				   *p_serial << endl;
 				   // TODO: no error checking yet...
 				   num = strtol(buf, NULL, 10);
-				   int i;
+
 					for(i = 0; i < NUM_SQUARES; i++){
 						if(num == goodInputs[i])
 							break;
@@ -357,7 +358,107 @@ void task_user::motor_settings (void)
 						*p_serial << PMS ("Bad Input") << endl;
 						break;
 					}
+					pot_1->put(false);
+					stepperDone->put(false);
+					switch(num){
+						case 11:
+							correctPos->put(1000); //hard coded number for encoded motor
+							p_numSteps->put(50); //hard coded number for stepper
+							break;
+						case 12:
+							correctPos->put(1500); //hard coded number for encoded motor
+							p_numSteps->put(30); //hard coded number for stepper
+							break;
+						case 13:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 14:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 21:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 22:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 23:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 24:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 31:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 32:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 33:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 34:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 41:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 42:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 43:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						case 44:
+							correctPos->put(0); //hard coded number for encoded motor
+							p_numSteps->put(0); //hard coded number for stepper
+							break;
+						default:
+							break;
+					}
 					
+					motor2Set = motor1Set = false;
+
+					while(!motor1Set && !motor2Set){
+						if(isCorrectPos->get())
+							motor1Set = true;
+						if(stepperDone->get())
+							motor2Set = true;
+						*p_serial << "m1: " << motor1Set << "m2: " << motor2Set << endl;
+						delay(100);
+					}
+
+					doneFiring->put(false);
+					p_fire->put(true);
+
+					while(!doneFiring->get()){
+						delay(10);
+					}
+
+					correctPos->put(0);
+
+					DDRA |= 1 << PIN7;
+					PORTA |= 1 << PIN7;
+					while((PINA & (1 << PIN7))){
+
+						_delay_ms(200);
+						*p_serial << PMS ("Limit switch not activated") << endl;
+					}
+
+
+
 					break;
 				default:
 					p_serial->putchar (char_in);

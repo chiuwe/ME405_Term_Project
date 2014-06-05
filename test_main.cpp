@@ -133,6 +133,10 @@ shared_data<int16_t>* p_numSteps;
 
 shared_data<bool>* p_fire;
 
+shared_data<bool>* stepperDone;
+
+shared_data<bool>* doneFiring;
+
 
 //=====================================================================================
 /** The main function sets up the RTOS.  Some test tasks are created. Then the 
@@ -175,6 +179,8 @@ int main (void)
     p_numSteps = new shared_data<int16_t>;
 	p_fire = new shared_data<bool>;
 
+	stepperDone = new shared_data<bool>;
+	doneFiring = new shared_data<bool>;
    //make new stepper here
    Stepper* stepDrive = new Stepper(&ser_port, 200, 1, 2, &DDRA, &PORTA);
    Solenoid* solDrive = new Solenoid(&ser_port, 0, &DDRA, &PORTA);

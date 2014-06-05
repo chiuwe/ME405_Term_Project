@@ -25,9 +25,10 @@ Solenoid::Solenoid( emstream *p_serial_port,
 }
 
 void Solenoid::release() {
-  *p_port |= (1 << activation_Pin);
+   *p_port |= (1 << activation_Pin);
    _delay_ms(200);
-   *p_port &= ~(1 << activation_Pin);
+  *p_port &= ~(1 << activation_Pin);
+   doneFiring->put(true);
 }
 
 void Solenoid::myDelayMS(uint64_t waitTime) {
