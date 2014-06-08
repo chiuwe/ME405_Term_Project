@@ -1,0 +1,132 @@
+\hypertarget{classencoder__driver}{\section{encoder\-\_\-driver \-Class \-Reference}
+\label{classencoder__driver}\index{encoder\-\_\-driver@{encoder\-\_\-driver}}
+}
+
+
+\-This class reads the input from an encoder.  
+
+
+
+
+{\ttfamily \#include $<$encoder\-\_\-driver.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classencoder__driver_ad124387e5bdf6602f0222999cf1f198f}{encoder\-\_\-driver} (emstream $\ast$p\-\_\-serial\-\_\-port, uint8\-\_\-t bit, uint8\-\_\-t trigger)
+\begin{DoxyCompactList}\small\item\em \-Constructor initializes the pin, and the rest are getter and setter functions. \end{DoxyCompactList}\item 
+int32\-\_\-t \hyperlink{classencoder__driver_acdf13e85a1fd7125689d07eb6f3f5711}{get\-\_\-count} (void)
+\item 
+void \hyperlink{classencoder__driver_a54528af7d72cc2f707f7ff20a1bc4a2e}{zero} (void)
+\item 
+void \hyperlink{classencoder__driver_a7ebf72a7925dcf4ef341b5980c1bf68b}{set\-\_\-position} (int32\-\_\-t)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classencoder__driver_a753c05178378d4e7961938175c35e8ee}{emstream $\ast$ \hyperlink{classencoder__driver_a753c05178378d4e7961938175c35e8ee}{ptr\-\_\-to\-\_\-serial}}\label{classencoder__driver_a753c05178378d4e7961938175c35e8ee}
+
+\begin{DoxyCompactList}\small\item\em \-The encoder driver class uses this pointer print to the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This class reads the input from an encoder. 
+
+\-This class takes in a port and its inputs and masks for a specific motherboard, as well as a serial port. 
+
+\-Definition at line 27 of file encoder\-\_\-driver.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classencoder__driver_ad124387e5bdf6602f0222999cf1f198f}{\index{encoder\-\_\-driver@{encoder\-\_\-driver}!encoder\-\_\-driver@{encoder\-\_\-driver}}
+\index{encoder\-\_\-driver@{encoder\-\_\-driver}!encoder_driver@{encoder\-\_\-driver}}
+\subsubsection[{encoder\-\_\-driver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf encoder\-\_\-driver\-::encoder\-\_\-driver} (
+\begin{DoxyParamCaption}
+\item[{emstream $\ast$}]{p\-\_\-serial\-\_\-port, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{uint8\-\_\-t}]{trigger}
+\end{DoxyParamCaption}
+)}}\label{classencoder__driver_ad124387e5bdf6602f0222999cf1f198f}
+
+
+\-Constructor initializes the pin, and the rest are getter and setter functions. 
+
+\-This constructor sets up a encoder driver.
+
+{\bfseries \-Details\-:} \-Sets up the interupt pin, initializes the serial port and count and error. 
+\begin{DoxyParams}{\-Parameters}
+{\em p\-\_\-serial\-\_\-port} & pointer to the serial port \\
+\hline
+{\em bit} & which pin on \-P\-O\-R\-T\-E to use as an external interupt \\
+\hline
+{\em trigger} & a mask to put on the external interupt control register to make sure that the \-I\-S\-R is called both on the rising and falling edge. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 23 of file encoder\-\_\-driver.\-cpp.
+
+
+
+\-References count, error, and ptr\-\_\-to\-\_\-serial.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classencoder__driver_acdf13e85a1fd7125689d07eb6f3f5711}{\index{encoder\-\_\-driver@{encoder\-\_\-driver}!get\-\_\-count@{get\-\_\-count}}
+\index{get\-\_\-count@{get\-\_\-count}!encoder_driver@{encoder\-\_\-driver}}
+\subsubsection[{get\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf encoder\-\_\-driver\-::get\-\_\-count} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classencoder__driver_acdf13e85a1fd7125689d07eb6f3f5711}
+\-Returns the number of \-I\-S\-R calls there have been 
+
+\-Definition at line 40 of file encoder\-\_\-driver.\-cpp.
+
+
+
+\-References count.
+
+\hypertarget{classencoder__driver_a7ebf72a7925dcf4ef341b5980c1bf68b}{\index{encoder\-\_\-driver@{encoder\-\_\-driver}!set\-\_\-position@{set\-\_\-position}}
+\index{set\-\_\-position@{set\-\_\-position}!encoder_driver@{encoder\-\_\-driver}}
+\subsubsection[{set\-\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf encoder\-\_\-driver\-::set\-\_\-position} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{position}
+\end{DoxyParamCaption}
+)}}\label{classencoder__driver_a7ebf72a7925dcf4ef341b5980c1bf68b}
+\-Setter function for count. 
+\begin{DoxyParams}{\-Parameters}
+{\em position} & \-Sets count to this value. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 56 of file encoder\-\_\-driver.\-cpp.
+
+
+
+\-References count.
+
+\hypertarget{classencoder__driver_a54528af7d72cc2f707f7ff20a1bc4a2e}{\index{encoder\-\_\-driver@{encoder\-\_\-driver}!zero@{zero}}
+\index{zero@{zero}!encoder_driver@{encoder\-\_\-driver}}
+\subsubsection[{zero}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf encoder\-\_\-driver\-::zero} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classencoder__driver_a54528af7d72cc2f707f7ff20a1bc4a2e}
+\-Sets the current count to 0 
+
+\-Definition at line 48 of file encoder\-\_\-driver.\-cpp.
+
+
+
+\-References count.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+encoder\-\_\-driver.\-h\item 
+\hyperlink{encoder__driver_8cpp}{encoder\-\_\-driver.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,129 @@
+\hypertarget{classtask__stepper}{\section{task\-\_\-stepper \-Class \-Reference}
+\label{classtask__stepper}\index{task\-\_\-stepper@{task\-\_\-stepper}}
+}
+
+
+{\ttfamily \#include $<$task\-\_\-stepper.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtask__stepper_ab2e4008527a6fb44a616a69b1d739569}{task\-\_\-stepper} (const char $\ast$a\-\_\-name, unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E a\-\_\-priority, size\-\_\-t a\-\_\-stack\-\_\-size, emstream $\ast$p\-\_\-ser\-\_\-dev, \hyperlink{classStepper}{\-Stepper} $\ast$p\-\_\-driver, shared\-\_\-data$<$ int64\-\_\-t $>$ $\ast$p\-\_\-speed, shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$p\-\_\-num\-Steps)
+\item 
+void \hyperlink{classtask__stepper_a7226c812d62d1fb9d67016dea744cfb6}{run} (void)
+\item 
+void \hyperlink{classtask__stepper_a67f233a746d003c7bdf7e3ca9e629112}{print\-\_\-status} (emstream \&)
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__stepper_a366768731c8b95b38d5a53fa7ea16f62}{uint32\-\_\-t \hyperlink{classtask__stepper_a366768731c8b95b38d5a53fa7ea16f62}{runs}}\label{classtask__stepper_a366768731c8b95b38d5a53fa7ea16f62}
+
+\begin{DoxyCompactList}\small\item\em \-How many times through the task loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__stepper_a9f3b42028d008161f2304978a6ef3bb8}{\hyperlink{classStepper}{\-Stepper} $\ast$ \hyperlink{classtask__stepper_a9f3b42028d008161f2304978a6ef3bb8}{driver}}\label{classtask__stepper_a9f3b42028d008161f2304978a6ef3bb8}
+
+\begin{DoxyCompactList}\small\item\em \-A pointer to \hyperlink{classmotor__driver}{motor\-\_\-driver}. \end{DoxyCompactList}\item 
+\hypertarget{classtask__stepper_a5a18c729cad2a9ee878f9b2a2b210a67}{shared\-\_\-data$<$ int64\-\_\-t $>$ $\ast$ \hyperlink{classtask__stepper_a5a18c729cad2a9ee878f9b2a2b210a67}{speed}}\label{classtask__stepper_a5a18c729cad2a9ee878f9b2a2b210a67}
+
+\begin{DoxyCompactList}\small\item\em \-A pointer to the brake shared data. \end{DoxyCompactList}\item 
+\hypertarget{classtask__stepper_a615e35d33e27e664c1562b46754408d6}{shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{classtask__stepper_a615e35d33e27e664c1562b46754408d6}{num\-Steps}}\label{classtask__stepper_a615e35d33e27e664c1562b46754408d6}
+
+\begin{DoxyCompactList}\small\item\em \-A pointer to the power shared data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This task determines what commands to send to the motor driver. 
+
+\-Definition at line 32 of file task\-\_\-stepper.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classtask__stepper_ab2e4008527a6fb44a616a69b1d739569}{\index{task\-\_\-stepper@{task\-\_\-stepper}!task\-\_\-stepper@{task\-\_\-stepper}}
+\index{task\-\_\-stepper@{task\-\_\-stepper}!task_stepper@{task\-\_\-stepper}}
+\subsubsection[{task\-\_\-stepper}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task\-\_\-stepper\-::task\-\_\-stepper} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{a\-\_\-name, }
+\item[{unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E}]{a\-\_\-priority, }
+\item[{size\-\_\-t}]{a\-\_\-stack\-\_\-size, }
+\item[{emstream $\ast$}]{p\-\_\-ser\-\_\-dev, }
+\item[{{\bf \-Stepper} $\ast$}]{p\-\_\-driver, }
+\item[{shared\-\_\-data$<$ int64\-\_\-t $>$ $\ast$}]{p\-\_\-speed, }
+\item[{shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$}]{p\-\_\-num\-Steps}
+\end{DoxyParamCaption}
+)}}\label{classtask__stepper_ab2e4008527a6fb44a616a69b1d739569}
+\-This constructor creates a task which controls the speed of a motor using input from an \-A/\-D converter run through a potentiometer as well as an input from. a button. \-The main job of this constructor is to call the constructor of parent class ({\ttfamily frt\-\_\-task} ); the parent's constructor the work. 
+\begin{DoxyParams}{\-Parameters}
+{\em a\-\_\-name} & \-A character string which will be the name of this task \\
+\hline
+{\em a\-\_\-priority} & \-The priority at which this task will initially run (default\-: 0) \\
+\hline
+{\em a\-\_\-stack\-\_\-size} & \-The size of this task's stack in bytes (default\-: config\-M\-I\-N\-I\-M\-A\-L\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-I\-Z\-E) \\
+\hline
+{\em brake\-\_\-mask} & \-Mask for brake value. \\
+\hline
+{\em p\-\_\-driver} & \-Pointer to a motor driver. \\
+\hline
+{\em p\-\_\-brake} & \-Pointer to the shared brake boolean. \\
+\hline
+{\em p\-\_\-power} & \-Pointer to the shared power value. \\
+\hline
+{\em p\-\_\-pot} & \-Pointer to the shared potentiometer boolean. \\
+\hline
+{\em adc\-\_\-mask} & \-Mask for which adc to read from. \\
+\hline
+{\em p\-\_\-ser\-\_\-dev} & \-Pointer to a serial device (port, radio, \-S\-D card, etc.) which can be used by this task to communicate (default\-: \-N\-U\-L\-L) \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 34 of file task\-\_\-stepper.\-cpp.
+
+
+
+\-References driver, num\-Steps, and speed.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classtask__stepper_a67f233a746d003c7bdf7e3ca9e629112}{\index{task\-\_\-stepper@{task\-\_\-stepper}!print\-\_\-status@{print\-\_\-status}}
+\index{print\-\_\-status@{print\-\_\-status}!task_stepper@{task\-\_\-stepper}}
+\subsubsection[{print\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-stepper\-::print\-\_\-status} (
+\begin{DoxyParamCaption}
+\item[{emstream \&}]{ser\-\_\-thing}
+\end{DoxyParamCaption}
+)}}\label{classtask__stepper_a67f233a746d003c7bdf7e3ca9e629112}
+\-Self explanitory. \-This function takes in a serial port in the form of an address and passes it straight to the parent constructor so it can print out the status. \-Also prints out the number of runs 
+
+\-Definition at line 79 of file task\-\_\-stepper.\-cpp.
+
+
+
+\-References runs.
+
+\hypertarget{classtask__stepper_a7226c812d62d1fb9d67016dea744cfb6}{\index{task\-\_\-stepper@{task\-\_\-stepper}!run@{run}}
+\index{run@{run}!task_stepper@{task\-\_\-stepper}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-stepper\-::run} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classtask__stepper_a7226c812d62d1fb9d67016dea744cfb6}
+\-This run method is called by the \-R\-T\-O\-S and contains a loop in which the task checks for data and sends it if appropriate.
+
+\-This method is called once by the \-R\-T\-O\-S scheduler. \-Each time around the for (;;) loop, it reads the \-A/\-D converter and change the selected motors speed. \-Each loop also check the two additional buttons, which control the brakes of the individual motors. 
+
+\-Definition at line 56 of file task\-\_\-stepper.\-cpp.
+
+
+
+\-References driver, num\-Steps, runs, and speed.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+task\-\_\-stepper.\-h\item 
+\hyperlink{task__stepper_8cpp}{task\-\_\-stepper.\-cpp}\end{DoxyCompactItemize}

@@ -84,6 +84,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="task_motor" -->
+<p>This task determines what commands to send to the motor driver.  
+ <a href="classtask__motor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="task__motor_8h_source.html">task_motor.h</a>&gt;</code></p>
 
 <p><a href="classtask__motor-members.html">List of all members.</a></p>
@@ -236,7 +239,7 @@ shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><
 <div class="memdoc">
 <p>Self explanitory. This function takes in a serial port in the form of an address and passes it straight to the parent constructor so it can print out the status. Also prints out the number of runs </p>
 
-<p>Definition at line <a class="el" href="task__motor_8cpp_source.html#l00093">93</a> of file <a class="el" href="task__motor_8cpp_source.html">task_motor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="task__motor_8cpp_source.html#l00094">94</a> of file <a class="el" href="task__motor_8cpp_source.html">task_motor.cpp</a>.</p>
 
 <p>References <a class="el" href="task__motor_8h_source.html#l00057">runs</a>.</p>
 
@@ -257,11 +260,11 @@ shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><
 </div>
 <div class="memdoc">
 <p>This run method is called by the RTOS and contains a loop in which the task checks for data and sends it if appropriate.</p>
-<p>This method is called once by the RTOS scheduler. Each time around the for (;;) loop, it reads the A/D converter and change the selected motors speed. Each loop also check the two additional buttons, which control the brakes of the individual motors. </p>
+<p>This method is called once by the RTOS scheduler. Each time around the for (;;) loop, it reads the A/D converter and change the selected motors speed. Each loop checks if it is being controled by a pot or by a given value and reacts accordingly </p>
 
-<p>Definition at line <a class="el" href="task__motor_8cpp_source.html#l00062">62</a> of file <a class="el" href="task__motor_8cpp_source.html">task_motor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="task__motor_8cpp_source.html#l00061">61</a> of file <a class="el" href="task__motor_8cpp_source.html">task_motor.cpp</a>.</p>
 
-<p>References <a class="el" href="task__motor_8h_source.html#l00041">adc_select</a>, <a class="el" href="task__motor_8h_source.html#l00047">brake</a>, <a class="el" href="motor__driver_8cpp_source.html#l00086">motor_driver::brake()</a>, <a class="el" href="task__motor_8h_source.html#l00038">brake_pin</a>, <a class="el" href="task__motor_8h_source.html#l00044">driver</a>, <a class="el" href="task__motor_8h_source.html#l00053">pot</a>, <a class="el" href="task__motor_8h_source.html#l00050">power</a>, <a class="el" href="adc_8cpp_source.html#l00065">adc::read_once()</a>, <a class="el" href="task__motor_8h_source.html#l00057">runs</a>, and <a class="el" href="motor__driver_8cpp_source.html#l00069">motor_driver::set_power()</a>.</p>
+<p>References <a class="el" href="task__motor_8h_source.html#l00041">adc_select</a>, <a class="el" href="task__motor_8h_source.html#l00047">brake</a>, <a class="el" href="motor__driver_8cpp_source.html#l00086">motor_driver::brake()</a>, <a class="el" href="task__motor_8h_source.html#l00038">brake_pin</a>, <a class="el" href="test__main_8cpp_source.html#l00082">count</a>, <a class="el" href="task__motor_8h_source.html#l00044">driver</a>, <a class="el" href="task__motor_8h_source.html#l00053">pot</a>, <a class="el" href="adc_8cpp_source.html#l00065">adc::read_once()</a>, and <a class="el" href="task__motor_8h_source.html#l00057">runs</a>.</p>
 
 </div>
 </div>
@@ -287,7 +290,7 @@ shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 24 2014 12:15:07 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 7 2014 20:51:47 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

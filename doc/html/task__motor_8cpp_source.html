@@ -136,49 +136,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00055"></a>00055 <span class="comment">//-------------------------------------------------------------------------------------</span><span class="comment"></span>
 <a name="l00056"></a>00056 <span class="comment">/** This method is called once by the RTOS scheduler. Each time around the for (;;)</span>
 <a name="l00057"></a>00057 <span class="comment"> *  loop, it reads the A/D converter and change the selected motors speed. Each loop</span>
-<a name="l00058"></a>00058 <span class="comment"> *  also check the two additional buttons, which control the brakes of the individual</span>
-<a name="l00059"></a>00059 <span class="comment"> *  motors.</span>
-<a name="l00060"></a>00060 <span class="comment"> */</span>
-<a name="l00061"></a>00061 
-<a name="l00062"></a><a class="code" href="classtask__motor.html#a895a075ec470c9d5a07b8959de06aacd">00062</a> <span class="keywordtype">void</span> <a class="code" href="classtask__motor.html#a895a075ec470c9d5a07b8959de06aacd">task_motor::run</a> (<span class="keywordtype">void</span>) {
-<a name="l00063"></a>00063    uint16_t a2d_reading;
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065    <a class="code" href="classadc.html" title="This class should run the A/D converter on an AVR processor.">adc</a> *p_my_adc = <span class="keyword">new</span> <a class="code" href="classadc.html" title="This class should run the A/D converter on an AVR processor.">adc</a>(p_serial);
-<a name="l00066"></a>00066    PORTC |= (1 &lt;&lt; 3) | (1 &lt;&lt; 4);
-<a name="l00067"></a>00067    
-<a name="l00068"></a>00068    <span class="comment">// This is the task loop for the motor control task. This loop runs until the</span>
-<a name="l00069"></a>00069    <span class="comment">// power is turned off or something equally dramatic occurs.</span>
-<a name="l00070"></a>00070    <span class="keywordflow">for</span> (;;) {
-<a name="l00071"></a>00071       <span class="keywordflow">if</span> (PINC &amp; (1 &lt;&lt; <a class="code" href="classtask__motor.html#a3f10bbf8d028b18a2a4427f1c152be53" title="Brake pin mask.">brake_pin</a>) || <a class="code" href="classtask__motor.html#a22d847bf1b45ed005a6f6393cb37d327" title="A pointer to the brake shared data.">brake</a>-&gt;get()) {
-<a name="l00072"></a>00072          <a class="code" href="classtask__motor.html#ad9d344255e29de67611998bf77658d9f" title="A pointer to motor_driver.">driver</a>-&gt;<a class="code" href="classmotor__driver.html#aa21e7894053cd83968d9e6b2958c9aec" title="This method stops the motor.">brake</a>();
-<a name="l00073"></a>00073       } <span class="keywordflow">else</span> {
-<a name="l00074"></a>00074          <span class="keywordflow">if</span> (<a class="code" href="classtask__motor.html#afe8cab4e912b4814d29a8b9f0d091f48" title="A pointer to the potentiometer shared data.">pot</a>-&gt;get()) {
-<a name="l00075"></a>00075             a2d_reading = p_my_adc-&gt;<a class="code" href="classadc.html#a2190a59696a7093e1ea605e998ccf97e" title="This method takes one A/D reading from the given channel and returns it.">read_once</a>(<a class="code" href="classtask__motor.html#ae64744376a44ba347c8f37afd7311ab7" title="Value for which adc should read from.">adc_select</a>);
-<a name="l00076"></a>00076             <a class="code" href="classtask__motor.html#ad9d344255e29de67611998bf77658d9f" title="A pointer to motor_driver.">driver</a>-&gt;<a class="code" href="classmotor__driver.html#ae8f7bd6aa553abf071abcebc876a9e10" title="This method sets direction and duty cycle of the motor.">set_power</a>((a2d_reading / 2) - 255);
-<a name="l00077"></a>00077          } <span class="keywordflow">else</span> {
-<a name="l00078"></a>00078             <a class="code" href="classtask__motor.html#ad9d344255e29de67611998bf77658d9f" title="A pointer to motor_driver.">driver</a>-&gt;<a class="code" href="classmotor__driver.html#ae8f7bd6aa553abf071abcebc876a9e10" title="This method sets direction and duty cycle of the motor.">set_power</a>(<a class="code" href="classtask__motor.html#a291245b7c83dae649f310caf016ab959" title="A pointer to the power shared data.">power</a>-&gt;get());
-<a name="l00079"></a>00079          }
-<a name="l00080"></a>00080       }
-<a name="l00081"></a>00081    }
-<a name="l00082"></a>00082    <a class="code" href="classtask__motor.html#a54a068b1d4cb46dba17d3de8d17fc87c" title="How many times through the task loop.">runs</a>++;
-<a name="l00083"></a>00083    <span class="comment">// TODO: delay might need to be longer. task priority not working if different.</span>
-<a name="l00084"></a>00084    delay (100);
-<a name="l00085"></a>00085 }
-<a name="l00086"></a>00086 <span class="comment"></span>
-<a name="l00087"></a>00087 <span class="comment">/**</span>
-<a name="l00088"></a>00088 <span class="comment"> * Self explanitory. This function takes in a serial port in the form of an</span>
-<a name="l00089"></a>00089 <span class="comment"> * address and passes it straight to the parent constructor so it can print</span>
-<a name="l00090"></a>00090 <span class="comment"> * out the status. Also prints out the number of runs</span>
-<a name="l00091"></a>00091 <span class="comment"> */</span>
-<a name="l00092"></a>00092 
-<a name="l00093"></a><a class="code" href="classtask__motor.html#ae855a78d1ee432a797d401a9222c9955">00093</a> <span class="keywordtype">void</span> <a class="code" href="classtask__motor.html#ae855a78d1ee432a797d401a9222c9955">task_motor::print_status</a> (emstream&amp; ser_thing) {
-<a name="l00094"></a>00094    <span class="comment">// Call the parent task&#39;s printing function first</span>
-<a name="l00095"></a>00095    <a class="code" href="classtask__motor.html#ae855a78d1ee432a797d401a9222c9955">frt_task::print_status</a> (ser_thing);
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097    <span class="comment">// Now add the additional data</span>
-<a name="l00098"></a>00098    ser_thing &lt;&lt; <span class="stringliteral">&quot;\t &quot;</span> &lt;&lt; <a class="code" href="classtask__motor.html#a54a068b1d4cb46dba17d3de8d17fc87c" title="How many times through the task loop.">runs</a> &lt;&lt; PMS (<span class="stringliteral">&quot; runs&quot;</span>);
-<a name="l00099"></a>00099 }
-<a name="l00100"></a>00100 
+<a name="l00058"></a>00058 <span class="comment"> *  checks if it is being controled by a pot or by a given value and reacts accordingly</span>
+<a name="l00059"></a>00059 <span class="comment"> */</span>
+<a name="l00060"></a>00060 
+<a name="l00061"></a><a class="code" href="classtask__motor.html#a895a075ec470c9d5a07b8959de06aacd">00061</a> <span class="keywordtype">void</span> <a class="code" href="classtask__motor.html#a895a075ec470c9d5a07b8959de06aacd">task_motor::run</a> (<span class="keywordtype">void</span>) {
+<a name="l00062"></a>00062    uint16_t a2d_reading;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064    <a class="code" href="classadc.html" title="This class should run the A/D converter on an AVR processor.">adc</a> *p_my_adc = <span class="keyword">new</span> <a class="code" href="classadc.html" title="This class should run the A/D converter on an AVR processor.">adc</a>(p_serial);
+<a name="l00065"></a>00065    PORTC |= (1 &lt;&lt; 3) | (1 &lt;&lt; 4);
+<a name="l00066"></a>00066    
+<a name="l00067"></a>00067    <span class="comment">// This is the task loop for the motor control task. This loop runs until the</span>
+<a name="l00068"></a>00068    <span class="comment">// power is turned off or something equally dramatic occurs.</span>
+<a name="l00069"></a>00069    <span class="keywordflow">for</span> (;;) {
+<a name="l00070"></a>00070       <span class="keywordflow">if</span> (PINC &amp; (1 &lt;&lt; <a class="code" href="classtask__motor.html#a3f10bbf8d028b18a2a4427f1c152be53" title="Brake pin mask.">brake_pin</a>) || <a class="code" href="classtask__motor.html#a22d847bf1b45ed005a6f6393cb37d327" title="A pointer to the brake shared data.">brake</a>-&gt;get()) {
+<a name="l00071"></a>00071          <a class="code" href="classtask__motor.html#ad9d344255e29de67611998bf77658d9f" title="A pointer to motor_driver.">driver</a>-&gt;<a class="code" href="classmotor__driver.html#aa21e7894053cd83968d9e6b2958c9aec" title="This method stops the motor.">brake</a>();
+<a name="l00072"></a>00072       } <span class="keywordflow">else</span> {
+<a name="l00073"></a>00073          <span class="keywordflow">if</span> (<a class="code" href="classtask__motor.html#afe8cab4e912b4814d29a8b9f0d091f48" title="A pointer to the potentiometer shared data.">pot</a>-&gt;get()) {
+<a name="l00074"></a>00074             a2d_reading = p_my_adc-&gt;<a class="code" href="classadc.html#a2190a59696a7093e1ea605e998ccf97e" title="This method takes one A/D reading from the given channel and returns it.">read_once</a>(<a class="code" href="classtask__motor.html#ae64744376a44ba347c8f37afd7311ab7" title="Value for which adc should read from.">adc_select</a>);
+<a name="l00075"></a>00075             correctPos-&gt;put(a2d_reading * 2);
+<a name="l00076"></a>00076             <span class="keywordflow">if</span>(abs(<a class="code" href="shares_8h.html#aa60c7b9ac556b68ae360c6850cdba1d2">count</a>-&gt;get() - correctPos-&gt;get()) &gt; 40)
+<a name="l00077"></a>00077               isCorrectPos-&gt;put(<span class="keyword">false</span>);
+<a name="l00078"></a>00078             <span class="comment">//driver-&gt;set_power((a2d_reading / 2) - 255);</span>
+<a name="l00079"></a>00079          } <span class="keywordflow">else</span> {
+<a name="l00080"></a>00080            isCorrectPos-&gt;put(<span class="keyword">false</span>);
+<a name="l00081"></a>00081          }
+<a name="l00082"></a>00082       }
+<a name="l00083"></a>00083       <a class="code" href="classtask__motor.html#a54a068b1d4cb46dba17d3de8d17fc87c" title="How many times through the task loop.">runs</a>++;
+<a name="l00084"></a>00084       delay (100);
+<a name="l00085"></a>00085    }
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 <span class="comment"></span>
+<a name="l00088"></a>00088 <span class="comment">/**</span>
+<a name="l00089"></a>00089 <span class="comment"> * Self explanitory. This function takes in a serial port in the form of an</span>
+<a name="l00090"></a>00090 <span class="comment"> * address and passes it straight to the parent constructor so it can print</span>
+<a name="l00091"></a>00091 <span class="comment"> * out the status. Also prints out the number of runs</span>
+<a name="l00092"></a>00092 <span class="comment"> */</span>
+<a name="l00093"></a>00093 
+<a name="l00094"></a><a class="code" href="classtask__motor.html#ae855a78d1ee432a797d401a9222c9955">00094</a> <span class="keywordtype">void</span> <a class="code" href="classtask__motor.html#ae855a78d1ee432a797d401a9222c9955">task_motor::print_status</a> (emstream&amp; ser_thing) {
+<a name="l00095"></a>00095    <span class="comment">// Call the parent task&#39;s printing function first</span>
+<a name="l00096"></a>00096    <a class="code" href="classtask__motor.html#ae855a78d1ee432a797d401a9222c9955">frt_task::print_status</a> (ser_thing);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098    <span class="comment">// Now add the additional data</span>
+<a name="l00099"></a>00099    ser_thing &lt;&lt; <span class="stringliteral">&quot;\t &quot;</span> &lt;&lt; <a class="code" href="classtask__motor.html#a54a068b1d4cb46dba17d3de8d17fc87c" title="How many times through the task loop.">runs</a> &lt;&lt; PMS (<span class="stringliteral">&quot; runs&quot;</span>);
+<a name="l00100"></a>00100 }
+<a name="l00101"></a>00101 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -197,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 24 2014 12:15:07 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 7 2014 20:51:47 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -1,0 +1,80 @@
+\hypertarget{classtask__solenoid}{\section{task\-\_\-solenoid \-Class \-Reference}
+\label{classtask__solenoid}\index{task\-\_\-solenoid@{task\-\_\-solenoid}}
+}
+
+
+{\ttfamily \#include $<$task\-\_\-solenoid.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__solenoid_abd7c0ec45737d5494d0965eb6d6c1829}{{\bfseries task\-\_\-solenoid} (const char $\ast$a\-\_\-name, unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E a\-\_\-priority, size\-\_\-t a\-\_\-stack\-\_\-size, emstream $\ast$p\-\_\-ser\-\_\-dev, \hyperlink{classSolenoid}{\-Solenoid} $\ast$p\-\_\-driver, shared\-\_\-data$<$ bool $>$ $\ast$p\-\_\-fire)}\label{classtask__solenoid_abd7c0ec45737d5494d0965eb6d6c1829}
+
+\item 
+void \hyperlink{classtask__solenoid_a99433e5b865772cf0103dcb7b135a1cb}{run} (void)
+\item 
+void \hyperlink{classtask__solenoid_a17936c9619b02d50e2aaa9f713848db8}{print\-\_\-status} (emstream \&)
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__solenoid_a2f7770e99d1b6d3023cb5666cd2b4231}{uint32\-\_\-t \hyperlink{classtask__solenoid_a2f7770e99d1b6d3023cb5666cd2b4231}{runs}}\label{classtask__solenoid_a2f7770e99d1b6d3023cb5666cd2b4231}
+
+\begin{DoxyCompactList}\small\item\em \-How many times through the task loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__solenoid_a1366400552a075b739125f57ebc9fb33}{\hyperlink{classSolenoid}{\-Solenoid} $\ast$ \hyperlink{classtask__solenoid_a1366400552a075b739125f57ebc9fb33}{driver}}\label{classtask__solenoid_a1366400552a075b739125f57ebc9fb33}
+
+\begin{DoxyCompactList}\small\item\em \-A pointer to \hyperlink{classmotor__driver}{motor\-\_\-driver}. \end{DoxyCompactList}\item 
+\hypertarget{classtask__solenoid_aeed63c3e849678760e87ba833bb8c3b2}{shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{classtask__solenoid_aeed63c3e849678760e87ba833bb8c3b2}{fire}}\label{classtask__solenoid_aeed63c3e849678760e87ba833bb8c3b2}
+
+\begin{DoxyCompactList}\small\item\em \-A pointer to the brake shared data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This task determines what commands to send to the motor driver. 
+
+\-Definition at line 32 of file task\-\_\-solenoid.\-h.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classtask__solenoid_a17936c9619b02d50e2aaa9f713848db8}{\index{task\-\_\-solenoid@{task\-\_\-solenoid}!print\-\_\-status@{print\-\_\-status}}
+\index{print\-\_\-status@{print\-\_\-status}!task_solenoid@{task\-\_\-solenoid}}
+\subsubsection[{print\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-solenoid\-::print\-\_\-status} (
+\begin{DoxyParamCaption}
+\item[{emstream \&}]{ser\-\_\-thing}
+\end{DoxyParamCaption}
+)}}\label{classtask__solenoid_a17936c9619b02d50e2aaa9f713848db8}
+\-Self explanitory. \-This function takes in a serial port in the form of an address and passes it straight to the parent constructor so it can print out the status. \-Also prints out the number of runs 
+
+\-Definition at line 47 of file task\-\_\-solenoid.\-cpp.
+
+
+
+\-References runs.
+
+\hypertarget{classtask__solenoid_a99433e5b865772cf0103dcb7b135a1cb}{\index{task\-\_\-solenoid@{task\-\_\-solenoid}!run@{run}}
+\index{run@{run}!task_solenoid@{task\-\_\-solenoid}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-solenoid\-::run} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classtask__solenoid_a99433e5b865772cf0103dcb7b135a1cb}
+\-This run method is called by the \-R\-T\-O\-S and contains a loop in which the task checks for data and sends it if appropriate.
+
+\-This method is called once by the \-R\-T\-O\-S scheduler. \-Each time around the for (;;) loop, it reads the \-A/\-D converter and change the selected motors speed. \-Each loop also check the two additional buttons, which control the brakes of the individual motors. 
+
+\-Definition at line 28 of file task\-\_\-solenoid.\-cpp.
+
+
+
+\-References driver, fire, and runs.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+task\-\_\-solenoid.\-h\item 
+task\-\_\-solenoid.\-cpp\end{DoxyCompactItemize}

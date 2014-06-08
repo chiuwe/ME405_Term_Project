@@ -119,56 +119,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00038"></a>00038 <span class="comment">// This queue allows tasks to send characters to the user interface task for display.</span>
 <a name="l00039"></a>00039 <span class="keyword">extern</span> frt_text_queue* <a class="code" href="shares_8h.html#a0f3e0982ec5df30e2339e7162f60a1d6">print_ser_queue</a>;
 <a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="comment">/*  This queue sends data from the source task to the sink task.</span>
-<a name="l00042"></a>00042 <span class="comment"> */</span>
-<a name="l00043"></a>00043 <span class="keyword">extern</span> frt_queue&lt;uint32_t&gt;* <a class="code" href="shares_8h.html#a943b100cc398890af64c8c00626935cd">p_queue_1</a>;
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="comment">/*  This shared data item allows a value to be posted by the source task and read by</span>
-<a name="l00046"></a>00046 <span class="comment"> *  the sink task.</span>
-<a name="l00047"></a>00047 <span class="comment"> */</span>
-<a name="l00048"></a>00048 <span class="keyword">extern</span> shared_data&lt;uint32_t&gt;* <a class="code" href="shares_8h.html#a6e36343e3fbd1317e9bbbdfee0691141">p_share_1</a>;
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 <span class="comment">/*  This shared data item allows a power value to be posted by user task and read by the </span>
-<a name="l00051"></a>00051 <span class="comment"> *  motor task.</span>
-<a name="l00052"></a>00052 <span class="comment"> */</span>
-<a name="l00053"></a>00053 <span class="keyword">extern</span> shared_data&lt;int16_t&gt;* <a class="code" href="shares_8h.html#af4072aaf6ada6eb77990a94e7635f3cf">power_1</a>;
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="comment">/*  This shared data item allows a power value to be posted by user task and read by the </span>
-<a name="l00056"></a>00056 <span class="comment"> *  motor task.</span>
-<a name="l00057"></a>00057 <span class="comment"> */</span>
-<a name="l00058"></a>00058 <span class="keyword">extern</span> shared_data&lt;int16_t&gt;* <a class="code" href="shares_8h.html#a083156cd9b0019a19d58e68339029490">power_2</a>;
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="comment">/*  This shared data item allows a brake bool to be posted by user task and read by the </span>
-<a name="l00061"></a>00061 <span class="comment"> *  motor task.</span>
-<a name="l00062"></a>00062 <span class="comment"> */</span>
-<a name="l00063"></a>00063 <span class="keyword">extern</span> shared_data&lt;bool&gt;* <a class="code" href="shares_8h.html#ac332aa182be3f396aab006e2a1223a8d">brake_1</a>;
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="comment">/*  This shared data item allows a break bool to be posted by user task and read by the </span>
-<a name="l00066"></a>00066 <span class="comment"> *  motor task.</span>
-<a name="l00067"></a>00067 <span class="comment"> */</span>
-<a name="l00068"></a>00068 <span class="keyword">extern</span> shared_data&lt;bool&gt;* <a class="code" href="shares_8h.html#a97c4fd12a21fba2f57e184c9132f2a80">brake_2</a>;
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 <span class="comment">/*  This shared data item determines if motor task reads from the potentiometer. </span>
-<a name="l00071"></a>00071 <span class="comment"> *  Set by user task and read by the motor task.</span>
-<a name="l00072"></a>00072 <span class="comment"> */</span>
-<a name="l00073"></a>00073 <span class="keyword">extern</span> shared_data&lt;bool&gt;* <a class="code" href="shares_8h.html#aa5a892890ce4839648694e817fbddfd3">pot_1</a>;
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 <span class="comment">/*  This shared data item determines if motor task reads from the potentiometer. </span>
-<a name="l00076"></a>00076 <span class="comment"> *  Set by user task and read by the motor task.</span>
-<a name="l00077"></a>00077 <span class="comment"> */</span>
-<a name="l00078"></a>00078 <span class="keyword">extern</span> shared_data&lt;bool&gt;* <a class="code" href="shares_8h.html#a67de327568f25bf830e7d71505443de8">pot_2</a>;
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080 <span class="comment">/*  This global variable will be written by the source task and read by the sink task.</span>
-<a name="l00081"></a>00081 <span class="comment"> *  We expect the process to be corrupted by context switches now and then.</span>
-<a name="l00082"></a>00082 <span class="comment"> */</span>
-<a name="l00083"></a>00083 <span class="keyword">extern</span> uint32_t* <a class="code" href="shares_8h.html#a72ac6f1f6a1b9cb1edc7836f31af85b5">p_glob_of_probs</a>;
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 <span class="comment">/*  This shared data item is used by the time rate measurement task to make its</span>
-<a name="l00086"></a>00086 <span class="comment"> *  measurements of how fast something is happening available to other tasks.</span>
-<a name="l00087"></a>00087 <span class="comment"> */</span>
-<a name="l00088"></a>00088 <span class="keyword">extern</span> shared_data&lt;float&gt;* <a class="code" href="shares_8h.html#ac174d5bcd10a2ba8775bab06712b7ce8">p_rate_1</a>;
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090 <span class="preprocessor">#endif // _SHARES_H_</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="keyword">extern</span> shared_data&lt;int32_t&gt;* <a class="code" href="shares_8h.html#aa60c7b9ac556b68ae360c6850cdba1d2">count</a>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="keyword">extern</span> shared_data&lt;int32_t&gt;* <a class="code" href="shares_8h.html#a476e236766eb757c99ae736b6b04c7e4">error</a>;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">extern</span> shared_data&lt;int16_t&gt;* <a class="code" href="shares_8h.html#af4072aaf6ada6eb77990a94e7635f3cf">power_1</a>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="comment">/*  This shared data item allows a brake bool to be posted by user task and read by the </span>
+<a name="l00050"></a>00050 <span class="comment"> *  motor task.</span>
+<a name="l00051"></a>00051 <span class="comment"> */</span>
+<a name="l00052"></a>00052 <span class="keyword">extern</span> shared_data&lt;bool&gt;* <a class="code" href="shares_8h.html#ac332aa182be3f396aab006e2a1223a8d">brake_1</a>;
+<a name="l00053"></a>00053 <span class="comment">/*  This shared data item determines if motor task reads from the potentiometer. </span>
+<a name="l00054"></a>00054 <span class="comment"> *  Set by user task and read by the motor task.</span>
+<a name="l00055"></a>00055 <span class="comment"> */</span>
+<a name="l00056"></a>00056 <span class="keyword">extern</span> shared_data&lt;bool&gt;* <a class="code" href="shares_8h.html#aa5a892890ce4839648694e817fbddfd3">pot_1</a>;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="comment">/*  This queue sends data from the source task to the sink task.</span>
+<a name="l00060"></a>00060 <span class="comment"> */</span>
+<a name="l00061"></a>00061 <span class="keyword">extern</span> frt_queue&lt;uint32_t&gt;* <a class="code" href="shares_8h.html#a943b100cc398890af64c8c00626935cd">p_queue_1</a>;
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">/*  This shared data item allows a value to be posted by the source task and read by</span>
+<a name="l00064"></a>00064 <span class="comment"> *  the sink task.</span>
+<a name="l00065"></a>00065 <span class="comment"> */</span>
+<a name="l00066"></a>00066 <span class="keyword">extern</span> shared_data&lt;uint32_t&gt;* <a class="code" href="shares_8h.html#a6e36343e3fbd1317e9bbbdfee0691141">p_share_1</a>;
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 <span class="comment">/* This shared data item lets the speed of rotation of the stepper motor*/</span>
+<a name="l00069"></a>00069 <span class="keyword">extern</span> shared_data&lt;int64_t&gt;* p_speed;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="comment">/* This shared data item tells the stepper motor how manny steps to move*/</span>
+<a name="l00072"></a>00072 <span class="keyword">extern</span> shared_data&lt;int16_t&gt;* p_numSteps;
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 <span class="comment">/*used to tell the solenoid to release for a bit*/</span>
+<a name="l00075"></a>00075 <span class="keyword">extern</span> shared_data&lt;bool&gt;* p_fire;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="keyword">extern</span> shared_data&lt;bool&gt;* stepperDone;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 <span class="keyword">extern</span> shared_data&lt;bool&gt;* doneFiring;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="comment">/*  This global variable will be written by the source task and read by the sink task.</span>
+<a name="l00082"></a>00082 <span class="comment"> *  We expect the process to be corrupted by context switches now and then.</span>
+<a name="l00083"></a>00083 <span class="comment"> */</span>
+<a name="l00084"></a>00084 <span class="keyword">extern</span> uint32_t* <a class="code" href="shares_8h.html#a72ac6f1f6a1b9cb1edc7836f31af85b5">p_glob_of_probs</a>;
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 <span class="comment">/*  This shared data item is used by the time rate measurement task to make its</span>
+<a name="l00087"></a>00087 <span class="comment"> *  measurements of how fast something is happening available to other tasks.</span>
+<a name="l00088"></a>00088 <span class="comment"> */</span>
+<a name="l00089"></a>00089 <span class="keyword">extern</span> shared_data&lt;float&gt;* <a class="code" href="shares_8h.html#ac174d5bcd10a2ba8775bab06712b7ce8">p_rate_1</a>;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="comment">/*</span>
+<a name="l00092"></a>00092 <span class="comment">* Knows if the motor is in the right location, or needs to be moved via task_P</span>
+<a name="l00093"></a>00093 <span class="comment">*/</span>
+<a name="l00094"></a>00094 <span class="keyword">extern</span> shared_data&lt;bool&gt;* isCorrectPos;
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="keyword">extern</span> shared_data&lt;int32_t&gt;* correctPos;
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="preprocessor">#endif // _SHARES_H_</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -187,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 24 2014 12:15:07 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 7 2014 20:51:47 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

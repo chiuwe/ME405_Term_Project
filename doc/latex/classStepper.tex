@@ -1,0 +1,79 @@
+\hypertarget{classStepper}{\section{\-Stepper \-Class \-Reference}
+\label{classStepper}\index{\-Stepper@{\-Stepper}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStepper_a18b6de3448354b4c7c249db7e680553b}{{\bfseries \-Stepper} (emstream $\ast$p\-\_\-serial\-\_\-port, uint16\-\_\-t number\-Of\-Steps, uint8\-\_\-t motor\-Pin1, uint8\-\_\-t motor\-Pin2, volatile uint8\-\_\-t $\ast$p\-\_\-ddr, volatile uint8\-\_\-t $\ast$p\-Port)}\label{classStepper_a18b6de3448354b4c7c249db7e680553b}
+
+\item 
+\hypertarget{classStepper_a253749a1db48e7df6756cc4dff826789}{{\bfseries \-Stepper} (emstream $\ast$p\-\_\-serial\-\_\-port, uint16\-\_\-t number\-Of\-Steps, uint8\-\_\-t motor\-Pin1, uint8\-\_\-t motor\-Pin2, uint8\-\_\-t motor\-Pin3, uint8\-\_\-t motor\-Pin4, volatile uint8\-\_\-t $\ast$p\-\_\-ddr, volatile uint8\-\_\-t $\ast$p\-Port)}\label{classStepper_a253749a1db48e7df6756cc4dff826789}
+
+\item 
+\hypertarget{classStepper_a5780b8ff7c703c074b33e76aac3f37cb}{void {\bfseries set\-Speed} (uint64\-\_\-t what\-Speed)}\label{classStepper_a5780b8ff7c703c074b33e76aac3f37cb}
+
+\item 
+\hypertarget{classStepper_a835c79cb881d633dd70210170184f041}{void {\bfseries step} (int16\-\_\-t number\-Of\-Steps)}\label{classStepper_a835c79cb881d633dd70210170184f041}
+
+\item 
+\hypertarget{classStepper_a78c1308c78834362382e6ea8a92a4b46}{void {\bfseries print\-Status} (void)}\label{classStepper_a78c1308c78834362382e6ea8a92a4b46}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStepper_a0670296a732687b8dfee43b73803858e}{void {\bfseries step\-Motor} (uint8\-\_\-t this\-Step)}\label{classStepper_a0670296a732687b8dfee43b73803858e}
+
+\item 
+\hypertarget{classStepper_a1ff593eaf8ee55d848ca52f214f96cdc}{void {\bfseries my\-Delay\-M\-S} (uint64\-\_\-t wait\-Time)}\label{classStepper_a1ff593eaf8ee55d848ca52f214f96cdc}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStepper_a4ae0d2fd881970dd6a4b6e1a8334f691}{uint8\-\_\-t {\bfseries direction}}\label{classStepper_a4ae0d2fd881970dd6a4b6e1a8334f691}
+
+\item 
+\hypertarget{classStepper_a89678370d4e08ef2883e4e3d39f25859}{uint64\-\_\-t {\bfseries step\-\_\-delay}}\label{classStepper_a89678370d4e08ef2883e4e3d39f25859}
+
+\item 
+\hypertarget{classStepper_a927b4d28baddc7a61018e8e505e7d355}{uint16\-\_\-t {\bfseries number\-\_\-of\-\_\-steps}}\label{classStepper_a927b4d28baddc7a61018e8e505e7d355}
+
+\item 
+\hypertarget{classStepper_a5b613cc0dbed645425d86b7571316d8f}{uint32\-\_\-t {\bfseries step\-\_\-number}}\label{classStepper_a5b613cc0dbed645425d86b7571316d8f}
+
+\item 
+\hypertarget{classStepper_a2d66212be56a13730fd79853cf95e09f}{emstream $\ast$ \hyperlink{classStepper_a2d66212be56a13730fd79853cf95e09f}{ptr\-\_\-to\-\_\-serial}}\label{classStepper_a2d66212be56a13730fd79853cf95e09f}
+
+\begin{DoxyCompactList}\small\item\em \-The motor driver class uses this pointer print to the serial port. \end{DoxyCompactList}\item 
+\hypertarget{classStepper_aae97c5e4391150f951d06bf0261224be}{uint8\-\_\-t {\bfseries motor\-\_\-pin\-\_\-1}}\label{classStepper_aae97c5e4391150f951d06bf0261224be}
+
+\item 
+\hypertarget{classStepper_a7587a846fb69d2d9ff5e262e6899b30e}{uint8\-\_\-t {\bfseries motor\-\_\-pin\-\_\-2}}\label{classStepper_a7587a846fb69d2d9ff5e262e6899b30e}
+
+\item 
+\hypertarget{classStepper_a787bb30fd11e35cace30694337b27bac}{uint8\-\_\-t {\bfseries motor\-\_\-pin\-\_\-3}}\label{classStepper_a787bb30fd11e35cace30694337b27bac}
+
+\item 
+\hypertarget{classStepper_a43ebe0d8705f01f7845bb3249d4f9f0a}{uint8\-\_\-t {\bfseries motor\-\_\-pin\-\_\-4}}\label{classStepper_a43ebe0d8705f01f7845bb3249d4f9f0a}
+
+\item 
+\hypertarget{classStepper_ab769f992e1a9514fa2561967e3f8d22b}{uint8\-\_\-t {\bfseries pin\-\_\-count}}\label{classStepper_ab769f992e1a9514fa2561967e3f8d22b}
+
+\item 
+\hypertarget{classStepper_ae6dfea5c129586ec0690c6275b5cd8b6}{volatile uint8\-\_\-t $\ast$ {\bfseries p\-\_\-port}}\label{classStepper_ae6dfea5c129586ec0690c6275b5cd8b6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 61 of file \-Stepper.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Stepper.\-h\item 
+\-Stepper.\-cpp\end{DoxyCompactItemize}

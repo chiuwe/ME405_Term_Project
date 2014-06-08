@@ -76,6 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#define-members">Defines</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">task_user.cpp File Reference</div>  </div>
@@ -83,11 +84,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;avr/io.h&gt;</code><br/>
 <code>#include &lt;avr/wdt.h&gt;</code><br/>
+<code>#include &lt;util/delay.h&gt;</code><br/>
 <code>#include &quot;nRF24L01_text.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="task__user_8h_source.html">task_user.h</a>&quot;</code><br/>
 </div>
 <p><a href="task__user_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ac7d11a56af31a55035980e2fed464a"></a><!-- doxytag: member="task_user.cpp::BUFF_LEN" ref="a6ac7d11a56af31a55035980e2fed464a" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BUFF_LEN</b>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b465f58937b29918f4308775e1ba1f8"></a><!-- doxytag: member="task_user.cpp::NUM_SQUARES" ref="a0b465f58937b29918f4308775e1ba1f8" args="" -->
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NUM_SQUARES</b>&#160;&#160;&#160;16</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const portTickType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="task__user_8cpp.html#a80f7a5c45b5679c45dd218506ab058f0">ticks_to_delay</a> = ((configTICK_RATE_HZ / 1000) * 5)</td></tr>
@@ -120,7 +128,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="task
 <div class="memdoc">
 <p>This constant sets how many RTOS ticks the task delays if the user's not talking. The duration is calculated to be about 5 ms. </p>
 
-<p>Definition at line <a class="el" href="task__user_8cpp_source.html#l00039">39</a> of file <a class="el" href="task__user_8cpp_source.html">task_user.cpp</a>.</p>
+<p>Definition at line <a class="el" href="task__user_8cpp_source.html#l00042">42</a> of file <a class="el" href="task__user_8cpp_source.html">task_user.cpp</a>.</p>
 
 </div>
 </div>
@@ -142,7 +150,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="task
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 24 2014 12:15:07 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 7 2014 20:51:47 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

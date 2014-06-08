@@ -6,25 +6,44 @@
 \item 
 frt\-\_\-text\-\_\-queue $\ast$ \hyperlink{shares_8h_a0f3e0982ec5df30e2339e7162f60a1d6}{print\-\_\-ser\-\_\-queue}
 \item 
+shared\-\_\-data$<$ int32\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_aa60c7b9ac556b68ae360c6850cdba1d2}{count}
+\item 
+shared\-\_\-data$<$ int32\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a476e236766eb757c99ae736b6b04c7e4}{error}
+\item 
+shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}{power\-\_\-1}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_ac332aa182be3f396aab006e2a1223a8d}{brake\-\_\-1}
+\item 
+shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_aa5a892890ce4839648694e817fbddfd3}{pot\-\_\-1}
+\item 
 frt\-\_\-queue$<$ uint32\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a943b100cc398890af64c8c00626935cd}{p\-\_\-queue\-\_\-1}
 \item 
 shared\-\_\-data$<$ uint32\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a6e36343e3fbd1317e9bbbdfee0691141}{p\-\_\-share\-\_\-1}
 \item 
-shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}{power\-\_\-1}
+\hypertarget{shares_8h_a51a5bdf30698e4e985d1d527d27c85c5}{shared\-\_\-data$<$ int64\-\_\-t $>$ $\ast$ {\bfseries p\-\_\-speed}}\label{shares_8h_a51a5bdf30698e4e985d1d527d27c85c5}
+
 \item 
-shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ \hyperlink{shares_8h_a083156cd9b0019a19d58e68339029490}{power\-\_\-2}
+\hypertarget{shares_8h_addd854135bbf0c1712b5d42d50177bcc}{shared\-\_\-data$<$ int16\-\_\-t $>$ $\ast$ {\bfseries p\-\_\-num\-Steps}}\label{shares_8h_addd854135bbf0c1712b5d42d50177bcc}
+
 \item 
-shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_ac332aa182be3f396aab006e2a1223a8d}{brake\-\_\-1}
+\hypertarget{shares_8h_a19f33b528e1f04e4690541c47012eb55}{shared\-\_\-data$<$ bool $>$ $\ast$ {\bfseries p\-\_\-fire}}\label{shares_8h_a19f33b528e1f04e4690541c47012eb55}
+
 \item 
-shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_a97c4fd12a21fba2f57e184c9132f2a80}{brake\-\_\-2}
+\hypertarget{shares_8h_a83d382a1014ec22c7d0b50e392c406fb}{shared\-\_\-data$<$ bool $>$ $\ast$ {\bfseries stepper\-Done}}\label{shares_8h_a83d382a1014ec22c7d0b50e392c406fb}
+
 \item 
-shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_aa5a892890ce4839648694e817fbddfd3}{pot\-\_\-1}
-\item 
-shared\-\_\-data$<$ bool $>$ $\ast$ \hyperlink{shares_8h_a67de327568f25bf830e7d71505443de8}{pot\-\_\-2}
+\hypertarget{shares_8h_a73b5b637e592dd46c42324de180f6c21}{shared\-\_\-data$<$ bool $>$ $\ast$ {\bfseries done\-Firing}}\label{shares_8h_a73b5b637e592dd46c42324de180f6c21}
+
 \item 
 uint32\-\_\-t $\ast$ \hyperlink{shares_8h_a72ac6f1f6a1b9cb1edc7836f31af85b5}{p\-\_\-glob\-\_\-of\-\_\-probs}
 \item 
 shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{shares_8h_ac174d5bcd10a2ba8775bab06712b7ce8}{p\-\_\-rate\-\_\-1}
+\item 
+\hypertarget{shares_8h_a424082176bd51eabcc5861c41b78d463}{shared\-\_\-data$<$ bool $>$ $\ast$ {\bfseries is\-Correct\-Pos}}\label{shares_8h_a424082176bd51eabcc5861c41b78d463}
+
+\item 
+\hypertarget{shares_8h_aef4b59818f8729cab7e1b588a1242d9e}{shared\-\_\-data$<$ int32\-\_\-t $>$ $\ast$ {\bfseries correct\-Pos}}\label{shares_8h_aef4b59818f8729cab7e1b588a1242d9e}
+
 \end{DoxyCompactItemize}
 
 
@@ -43,24 +62,35 @@ shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{shares_8h_ac174d5bcd10a2ba8775ba
 \hypertarget{shares_8h_ac332aa182be3f396aab006e2a1223a8d}{\index{shares.\-h@{shares.\-h}!brake\-\_\-1@{brake\-\_\-1}}
 \index{brake\-\_\-1@{brake\-\_\-1}!shares.h@{shares.\-h}}
 \subsubsection[{brake\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf brake\-\_\-1}}}\label{shares_8h_ac332aa182be3f396aab006e2a1223a8d}
-\-This shared data item allows a brake bool to be posted by user task and read by the motor task. 
+an artifact of when this was controled by hardware and software. effectivly useless, though needed for compiling. 
 
-\-Definition at line 97 of file test\-\_\-main.\-cpp.
-
-
-
-\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
-
-\hypertarget{shares_8h_a97c4fd12a21fba2f57e184c9132f2a80}{\index{shares.\-h@{shares.\-h}!brake\-\_\-2@{brake\-\_\-2}}
-\index{brake\-\_\-2@{brake\-\_\-2}!shares.h@{shares.\-h}}
-\subsubsection[{brake\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf brake\-\_\-2}}}\label{shares_8h_a97c4fd12a21fba2f57e184c9132f2a80}
-\-This shared data item allows a break bool to be posted by user task and read by the motor task. 
-
-\-Definition at line 102 of file test\-\_\-main.\-cpp.
+\-Definition at line 105 of file test\-\_\-main.\-cpp.
 
 
 
-\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+\-Referenced by main().
+
+\hypertarget{shares_8h_aa60c7b9ac556b68ae360c6850cdba1d2}{\index{shares.\-h@{shares.\-h}!count@{count}}
+\index{count@{count}!shares.h@{shares.\-h}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int32\-\_\-t$>$$\ast$ {\bf count}}}\label{shares_8h_aa60c7b9ac556b68ae360c6850cdba1d2}
+\-This number represents where the motor is rotationally where 4000 is one full rotation 
+
+\-Definition at line 82 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by encoder\-\_\-driver\-::encoder\-\_\-driver(), encoder\-\_\-driver\-::get\-\_\-count(), \-I\-S\-R(), main(), task\-\_\-\-P\-::run(), task\-\_\-motor\-::run(), encoder\-\_\-driver\-::set\-\_\-position(), and encoder\-\_\-driver\-::zero().
+
+\hypertarget{shares_8h_a476e236766eb757c99ae736b6b04c7e4}{\index{shares.\-h@{shares.\-h}!error@{error}}
+\index{error@{error}!shares.h@{shares.\-h}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int32\-\_\-t$>$$\ast$ {\bf error}}}\label{shares_8h_a476e236766eb757c99ae736b6b04c7e4}
+\-T\-O\-D\-O\-: \-This is the number of errors that have occured while monotoring the encoder 
+
+\-Definition at line 86 of file test\-\_\-main.\-cpp.
+
+
+
+\-Referenced by encoder\-\_\-driver\-::encoder\-\_\-driver(), \-I\-S\-R(), and main().
 
 \hypertarget{shares_8h_a72ac6f1f6a1b9cb1edc7836f31af85b5}{\index{shares.\-h@{shares.\-h}!p\-\_\-glob\-\_\-of\-\_\-probs@{p\-\_\-glob\-\_\-of\-\_\-probs}}
 \index{p\-\_\-glob\-\_\-of\-\_\-probs@{p\-\_\-glob\-\_\-of\-\_\-probs}!shares.h@{shares.\-h}}
@@ -78,7 +108,7 @@ shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{shares_8h_ac174d5bcd10a2ba8775ba
 \subsubsection[{p\-\_\-queue\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}frt\-\_\-queue$<$uint32\-\_\-t$>$$\ast$ {\bf p\-\_\-queue\-\_\-1}}}\label{shares_8h_a943b100cc398890af64c8c00626935cd}
 \-This queue sends data from the source task to the sink task. 
 
-\-Definition at line 77 of file test\-\_\-main.\-cpp.
+\-Definition at line 89 of file test\-\_\-main.\-cpp.
 
 
 
@@ -100,7 +130,7 @@ shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{shares_8h_ac174d5bcd10a2ba8775ba
 \subsubsection[{p\-\_\-share\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$uint32\-\_\-t$>$$\ast$ {\bf p\-\_\-share\-\_\-1}}}\label{shares_8h_a6e36343e3fbd1317e9bbbdfee0691141}
 \-This shared data item allows a value to be posted by the source task and read by the sink task. 
 
-\-Definition at line 82 of file test\-\_\-main.\-cpp.
+\-Definition at line 94 of file test\-\_\-main.\-cpp.
 
 
 
@@ -109,53 +139,31 @@ shared\-\_\-data$<$ float $>$ $\ast$ \hyperlink{shares_8h_ac174d5bcd10a2ba8775ba
 \hypertarget{shares_8h_aa5a892890ce4839648694e817fbddfd3}{\index{shares.\-h@{shares.\-h}!pot\-\_\-1@{pot\-\_\-1}}
 \index{pot\-\_\-1@{pot\-\_\-1}!shares.h@{shares.\-h}}
 \subsubsection[{pot\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf pot\-\_\-1}}}\label{shares_8h_aa5a892890ce4839648694e817fbddfd3}
-\-This shared data item determines if motor task reads from the potentiometer. \-Set by user task and read by the motor task. 
+an artifact of when this was controled by hardware and software. effectivly useless, though needed for compiling. 
 
-\-Definition at line 107 of file test\-\_\-main.\-cpp.
-
-
-
-\-Referenced by main(), task\-\_\-user\-::motor\-\_\-menu(), and task\-\_\-user\-::motor\-\_\-settings().
-
-\hypertarget{shares_8h_a67de327568f25bf830e7d71505443de8}{\index{shares.\-h@{shares.\-h}!pot\-\_\-2@{pot\-\_\-2}}
-\index{pot\-\_\-2@{pot\-\_\-2}!shares.h@{shares.\-h}}
-\subsubsection[{pot\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$bool$>$$\ast$ {\bf pot\-\_\-2}}}\label{shares_8h_a67de327568f25bf830e7d71505443de8}
-\-This shared data item determines if motor task reads from the potentiometer. \-Set by user task and read by the motor task. 
-
-\-Definition at line 112 of file test\-\_\-main.\-cpp.
+\-Definition at line 111 of file test\-\_\-main.\-cpp.
 
 
 
-\-Referenced by main(), task\-\_\-user\-::motor\-\_\-menu(), and task\-\_\-user\-::motor\-\_\-settings().
+\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
 
 \hypertarget{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}{\index{shares.\-h@{shares.\-h}!power\-\_\-1@{power\-\_\-1}}
 \index{power\-\_\-1@{power\-\_\-1}!shares.h@{shares.\-h}}
 \subsubsection[{power\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int16\-\_\-t$>$$\ast$ {\bf power\-\_\-1}}}\label{shares_8h_af4072aaf6ada6eb77990a94e7635f3cf}
 \-This shared data item allows a power value to be posted by user task and read by the motor task. 
 
-\-Definition at line 87 of file test\-\_\-main.\-cpp.
+\-Definition at line 99 of file test\-\_\-main.\-cpp.
 
 
 
-\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
-
-\hypertarget{shares_8h_a083156cd9b0019a19d58e68339029490}{\index{shares.\-h@{shares.\-h}!power\-\_\-2@{power\-\_\-2}}
-\index{power\-\_\-2@{power\-\_\-2}!shares.h@{shares.\-h}}
-\subsubsection[{power\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-data$<$int16\-\_\-t$>$$\ast$ {\bf power\-\_\-2}}}\label{shares_8h_a083156cd9b0019a19d58e68339029490}
-\-This shared data item allows a power value to be posted by user task and read by the motor task. 
-
-\-Definition at line 92 of file test\-\_\-main.\-cpp.
-
-
-
-\-Referenced by main(), and task\-\_\-user\-::motor\-\_\-settings().
+\-Referenced by main().
 
 \hypertarget{shares_8h_a0f3e0982ec5df30e2339e7162f60a1d6}{\index{shares.\-h@{shares.\-h}!print\-\_\-ser\-\_\-queue@{print\-\_\-ser\-\_\-queue}}
 \index{print\-\_\-ser\-\_\-queue@{print\-\_\-ser\-\_\-queue}!shares.h@{shares.\-h}}
 \subsubsection[{print\-\_\-ser\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}frt\-\_\-text\-\_\-queue$\ast$ {\bf print\-\_\-ser\-\_\-queue}}}\label{shares_8h_a0f3e0982ec5df30e2339e7162f60a1d6}
 \-This is a print queue, descended from base\-\_\-text\-\_\-serial so that things can be printed into the queue using the \char`\"{}$<$$<$\char`\"{} operator and they'll come out the other end as a stream of characters. \-It's used by tasks that send things to the user interface task to be printed. 
 
-\-Definition at line 73 of file test\-\_\-main.\-cpp.
+\-Definition at line 78 of file test\-\_\-main.\-cpp.
 
 
 

@@ -97,8 +97,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;frt_queue.h&quot;</code><br/>
 <code>#include &quot;frt_shared_data.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="shares_8h_source.html">shares.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="task__user_8h_source.html">task_user.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="motor__driver_8h_source.html">motor_driver.h</a>&quot;</code><br/>
+<code>#include &quot;task_encoder.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="task__motor_8h_source.html">task_motor.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="task__user_8h_source.html">task_user.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="task__P_8h_source.html">task_P.h</a>&quot;</code><br/>
+<code>#include &quot;task_solenoid.h&quot;</code><br/>
+<code>#include &quot;task_stepper.h&quot;</code><br/>
 </div>
 <p><a href="test__main_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -109,16 +114,29 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a6dd5794690e811f62bce8432acff99a0">N_MULTI_TASKS</a> = 4</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">frt_text_queue *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a0f3e0982ec5df30e2339e7162f60a1d6">print_ser_queue</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; int32_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#aa60c7b9ac556b68ae360c6850cdba1d2">count</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; int32_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a476e236766eb757c99ae736b6b04c7e4">error</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">frt_queue&lt; uint32_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a943b100cc398890af64c8c00626935cd">p_queue_1</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; uint32_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a6e36343e3fbd1317e9bbbdfee0691141">p_share_1</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; int16_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#af4072aaf6ada6eb77990a94e7635f3cf">power_1</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; int16_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a083156cd9b0019a19d58e68339029490">power_2</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#ac332aa182be3f396aab006e2a1223a8d">brake_1</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a97c4fd12a21fba2f57e184c9132f2a80">brake_2</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#aa5a892890ce4839648694e817fbddfd3">pot_1</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a67de327568f25bf830e7d71505443de8">pot_2</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#a72ac6f1f6a1b9cb1edc7836f31af85b5">p_glob_of_probs</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">shared_data&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__main_8cpp.html#ac174d5bcd10a2ba8775bab06712b7ce8">p_rate_1</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a424082176bd51eabcc5861c41b78d463"></a><!-- doxytag: member="test_main.cpp::isCorrectPos" ref="a424082176bd51eabcc5861c41b78d463" args="" -->
+shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>isCorrectPos</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef4b59818f8729cab7e1b588a1242d9e"></a><!-- doxytag: member="test_main.cpp::correctPos" ref="aef4b59818f8729cab7e1b588a1242d9e" args="" -->
+shared_data&lt; int32_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>correctPos</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51a5bdf30698e4e985d1d527d27c85c5"></a><!-- doxytag: member="test_main.cpp::p_speed" ref="a51a5bdf30698e4e985d1d527d27c85c5" args="" -->
+shared_data&lt; int64_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>p_speed</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addd854135bbf0c1712b5d42d50177bcc"></a><!-- doxytag: member="test_main.cpp::p_numSteps" ref="addd854135bbf0c1712b5d42d50177bcc" args="" -->
+shared_data&lt; int16_t &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>p_numSteps</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19f33b528e1f04e4690541c47012eb55"></a><!-- doxytag: member="test_main.cpp::p_fire" ref="a19f33b528e1f04e4690541c47012eb55" args="" -->
+shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>p_fire</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83d382a1014ec22c7d0b50e392c406fb"></a><!-- doxytag: member="test_main.cpp::stepperDone" ref="a83d382a1014ec22c7d0b50e392c406fb" args="" -->
+shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>stepperDone</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73b5b637e592dd46c42324de180f6c21"></a><!-- doxytag: member="test_main.cpp::doneFiring" ref="a73b5b637e592dd46c42324de180f6c21" args="" -->
+shared_data&lt; bool &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>doneFiring</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file contains the <a class="el" href="test__main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe">main()</a> code for a program which tests various features of the ME405/ME507/FreeRTOS software package. Tests include sending data from tasks to other tasks by several means and checking for errors in transmission; creating large numbers of tasks and getting them to all run at the same time; and testing time stamps by measuring the frequency of signals sent by a signal generator.</p>
@@ -150,9 +168,9 @@ Variables</h2></td></tr>
 <p>The main function sets up the RTOS. Some test tasks are created. Then the scheduler is started up; the scheduler runs until power is turned off or there's a reset. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>This is a real-time microcontroller program which doesn't return. Ever. </dd></dl>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00132">132</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00148">148</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>References <a class="el" href="test__main_8cpp_source.html#l00097">brake_1</a>, <a class="el" href="test__main_8cpp_source.html#l00102">brake_2</a>, <a class="el" href="test__main_8cpp_source.html#l00117">p_glob_of_probs</a>, <a class="el" href="test__main_8cpp_source.html#l00077">p_queue_1</a>, <a class="el" href="test__main_8cpp_source.html#l00122">p_rate_1</a>, <a class="el" href="test__main_8cpp_source.html#l00082">p_share_1</a>, <a class="el" href="test__main_8cpp_source.html#l00107">pot_1</a>, <a class="el" href="test__main_8cpp_source.html#l00112">pot_2</a>, <a class="el" href="test__main_8cpp_source.html#l00087">power_1</a>, <a class="el" href="test__main_8cpp_source.html#l00092">power_2</a>, and <a class="el" href="test__main_8cpp_source.html#l00073">print_ser_queue</a>.</p>
+<p>References <a class="el" href="test__main_8cpp_source.html#l00105">brake_1</a>, <a class="el" href="test__main_8cpp_source.html#l00082">count</a>, <a class="el" href="test__main_8cpp_source.html#l00086">error</a>, <a class="el" href="test__main_8cpp_source.html#l00117">p_glob_of_probs</a>, <a class="el" href="test__main_8cpp_source.html#l00089">p_queue_1</a>, <a class="el" href="test__main_8cpp_source.html#l00122">p_rate_1</a>, <a class="el" href="test__main_8cpp_source.html#l00094">p_share_1</a>, <a class="el" href="test__main_8cpp_source.html#l00111">pot_1</a>, <a class="el" href="test__main_8cpp_source.html#l00099">power_1</a>, and <a class="el" href="test__main_8cpp_source.html#l00078">print_ser_queue</a>.</p>
 
 </div>
 </div>
@@ -167,29 +185,47 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>This shared data item allows a brake bool to be posted by user task and read by the motor task. </p>
+<p>an artifact of when this was controled by hardware and software. effectivly useless, though needed for compiling. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00097">97</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00105">105</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00261">task_user::motor_settings()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a97c4fd12a21fba2f57e184c9132f2a80"></a><!-- doxytag: member="test_main.cpp::brake_2" ref="a97c4fd12a21fba2f57e184c9132f2a80" args="" -->
+<a class="anchor" id="aa60c7b9ac556b68ae360c6850cdba1d2"></a><!-- doxytag: member="test_main.cpp::count" ref="aa60c7b9ac556b68ae360c6850cdba1d2" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">shared_data&lt;bool&gt;* <a class="el" href="test__main_8cpp.html#a97c4fd12a21fba2f57e184c9132f2a80">brake_2</a></td>
+          <td class="memname">shared_data&lt;int32_t&gt;* <a class="el" href="test__main_8cpp.html#aa60c7b9ac556b68ae360c6850cdba1d2">count</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>This shared data item allows a break bool to be posted by user task and read by the motor task. </p>
+<p>This number represents where the motor is rotationally where 4000 is one full rotation </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00102">102</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00082">82</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00261">task_user::motor_settings()</a>.</p>
+<p>Referenced by <a class="el" href="encoder__driver_8cpp_source.html#l00023">encoder_driver::encoder_driver()</a>, <a class="el" href="encoder__driver_8cpp_source.html#l00040">encoder_driver::get_count()</a>, <a class="el" href="encoder__driver_8cpp_source.html#l00065">ISR()</a>, <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>, <a class="el" href="task__P_8cpp_source.html#l00046">task_P::run()</a>, <a class="el" href="task__motor_8cpp_source.html#l00061">task_motor::run()</a>, <a class="el" href="encoder__driver_8cpp_source.html#l00056">encoder_driver::set_position()</a>, and <a class="el" href="encoder__driver_8cpp_source.html#l00048">encoder_driver::zero()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a476e236766eb757c99ae736b6b04c7e4"></a><!-- doxytag: member="test_main.cpp::error" ref="a476e236766eb757c99ae736b6b04c7e4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_data&lt;int32_t&gt;* <a class="el" href="test__main_8cpp.html#a476e236766eb757c99ae736b6b04c7e4">error</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>TODO: This is the number of errors that have occured while monotoring the encoder </p>
+
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00086">86</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="encoder__driver_8cpp_source.html#l00023">encoder_driver::encoder_driver()</a>, <a class="el" href="encoder__driver_8cpp_source.html#l00065">ISR()</a>, and <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
@@ -205,7 +241,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 <p>This is the number of tasks which will be instantiated from the task_multi class. These tasks don't to a whole lot except use up processor time and memory space in order to test how well the program works with lots of tasks. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00058">58</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00063">63</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,7 +259,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00117">117</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
@@ -239,9 +275,9 @@ Variables</h2></td></tr>
 <div class="memdoc">
 <p>This queue sends data from the source task to the sink task. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00077">77</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00089">89</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
@@ -259,7 +295,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00122">122</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
@@ -275,9 +311,9 @@ Variables</h2></td></tr>
 <div class="memdoc">
 <p>This shared data item allows a value to be posted by the source task and read by the sink task. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00082">82</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00094">94</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
@@ -291,29 +327,11 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>This shared data item determines if motor task reads from the potentiometer. Set by user task and read by the motor task. </p>
+<p>an artifact of when this was controled by hardware and software. effectivly useless, though needed for compiling. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00107">107</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00111">111</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, <a class="el" href="task__user_8cpp_source.html#l00241">task_user::motor_menu()</a>, and <a class="el" href="task__user_8cpp_source.html#l00261">task_user::motor_settings()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a67de327568f25bf830e7d71505443de8"></a><!-- doxytag: member="test_main.cpp::pot_2" ref="a67de327568f25bf830e7d71505443de8" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">shared_data&lt;bool&gt;* <a class="el" href="test__main_8cpp.html#a67de327568f25bf830e7d71505443de8">pot_2</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>This shared data item determines if motor task reads from the potentiometer. Set by user task and read by the motor task. </p>
-
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00112">112</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
-
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, <a class="el" href="task__user_8cpp_source.html#l00241">task_user::motor_menu()</a>, and <a class="el" href="task__user_8cpp_source.html#l00261">task_user::motor_settings()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00262">task_user::motor_settings()</a>.</p>
 
 </div>
 </div>
@@ -329,27 +347,9 @@ Variables</h2></td></tr>
 <div class="memdoc">
 <p>This shared data item allows a power value to be posted by user task and read by the motor task. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00087">87</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00099">99</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00261">task_user::motor_settings()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a083156cd9b0019a19d58e68339029490"></a><!-- doxytag: member="test_main.cpp::power_2" ref="a083156cd9b0019a19d58e68339029490" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">shared_data&lt;int16_t&gt;* <a class="el" href="test__main_8cpp.html#a083156cd9b0019a19d58e68339029490">power_2</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>This shared data item allows a power value to be posted by user task and read by the motor task. </p>
-
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00092">92</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
-
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00261">task_user::motor_settings()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>.</p>
 
 </div>
 </div>
@@ -365,9 +365,9 @@ Variables</h2></td></tr>
 <div class="memdoc">
 <p>This is a print queue, descended from base_text_serial so that things can be printed into the queue using the "&lt;&lt;" operator and they'll come out the other end as a stream of characters. It's used by tasks that send things to the user interface task to be printed. </p>
 
-<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00073">73</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
+<p>Definition at line <a class="el" href="test__main_8cpp_source.html#l00078">78</a> of file <a class="el" href="test__main_8cpp_source.html">test_main.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00132">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00076">task_user::run()</a>.</p>
+<p>Referenced by <a class="el" href="test__main_8cpp_source.html#l00148">main()</a>, and <a class="el" href="task__user_8cpp_source.html#l00079">task_user::run()</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Variables</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 24 2014 12:15:07 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 7 2014 20:51:47 for Lab 3 Multitasking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

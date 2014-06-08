@@ -1,0 +1,89 @@
+\hypertarget{classtask__P}{\section{task\-\_\-\-P \-Class \-Reference}
+\label{classtask__P}\index{task\-\_\-\-P@{task\-\_\-\-P}}
+}
+
+
+\-Starts up a new task and grabs the pointer to the motor it will be manipulating.  
+
+
+
+
+{\ttfamily \#include $<$task\-\_\-\-P.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtask__P_a57b4bbf00a14dcbc1597d90eb0ccada2}{task\-\_\-\-P} (const char $\ast$a\-\_\-name, unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E a\-\_\-priority, size\-\_\-t a\-\_\-stack\-\_\-size, emstream $\ast$p\-\_\-ser\-\_\-dev, \hyperlink{classmotor__driver}{motor\-\_\-driver} $\ast$m\-Driver)
+\item 
+void \hyperlink{classtask__P_af315a71a8674a968c6169d44009ac3d4}{run} (void)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__P_ad692b5a39121ce63010e92540c0c5ab2}{\hyperlink{classmotor__driver}{motor\-\_\-driver} $\ast$ {\bfseries motor}}\label{classtask__P_ad692b5a39121ce63010e92540c0c5ab2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Starts up a new task and grabs the pointer to the motor it will be manipulating. 
+
+\-Definition at line 31 of file task\-\_\-\-P.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classtask__P_a57b4bbf00a14dcbc1597d90eb0ccada2}{\index{task\-\_\-\-P@{task\-\_\-\-P}!task\-\_\-\-P@{task\-\_\-\-P}}
+\index{task\-\_\-\-P@{task\-\_\-\-P}!task_P@{task\-\_\-\-P}}
+\subsubsection[{task\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task\-\_\-\-P\-::task\-\_\-\-P} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{a\-\_\-name, }
+\item[{unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E}]{a\-\_\-priority, }
+\item[{size\-\_\-t}]{a\-\_\-stack\-\_\-size, }
+\item[{emstream $\ast$}]{p\-\_\-ser\-\_\-dev, }
+\item[{{\bf motor\-\_\-driver} $\ast$}]{m\-Driver}
+\end{DoxyParamCaption}
+)}}\label{classtask__P_a57b4bbf00a14dcbc1597d90eb0ccada2}
+\-This constructor creates a task which controls the rotation of a motor using input from an \-A/\-D converter run through a potentiometer as well as an input from. an interface. \-The main job of this constructor is to call the constructor of parent class ({\ttfamily frt\-\_\-task} ); the parent's constructor the work. 
+\begin{DoxyParams}{\-Parameters}
+{\em a\-\_\-name} & \-A character string which will be the name of this task \\
+\hline
+{\em a\-\_\-priority} & \-The priority at which this task will initially run (default\-: 0) \\
+\hline
+{\em a\-\_\-stack\-\_\-size} & \-The size of this task's stack in bytes (default\-: config\-M\-I\-N\-I\-M\-A\-L\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-I\-Z\-E) \\
+\hline
+{\em p\-\_\-ser\-\_\-dev} & \-Pointer to a serial device (port, radio, \-S\-D card, etc.) which can be used by this task to communicate (default\-: \-N\-U\-L\-L) \\
+\hline
+{\em m\-Driver} & \-A pointer to the driver being controled. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 28 of file task\-\_\-\-P.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classtask__P_af315a71a8674a968c6169d44009ac3d4}{\index{task\-\_\-\-P@{task\-\_\-\-P}!run@{run}}
+\index{run@{run}!task_P@{task\-\_\-\-P}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-\-P\-::run} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classtask__P_af315a71a8674a968c6169d44009ac3d4}
+\-This run method is called by the \-R\-T\-O\-S and contains a loop in which the task checks if the motor needs to change possition.
+
+\-This is the main function of task\-\_\-p. \-Every iteration it checks if the motor is where it is saposed to be. \-If it's not, it tries to get there. \-The speeds are relative to the distance to travel, with a hardcoded lower and upper bound specific to the \-Pitt\-Man motor. 
+
+\-Definition at line 46 of file task\-\_\-\-P.\-cpp.
+
+
+
+\-References count, and motor\-\_\-driver\-::set\-\_\-power().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{task__P_8h}{task\-\_\-\-P.\-h}\item 
+task\-\_\-\-P.\-cpp\end{DoxyCompactItemize}

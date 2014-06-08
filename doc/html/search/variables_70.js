@@ -7,10 +7,8 @@ var searchData=
   ['p_5fshare_5f1',['p_share_1',['../shares_8h.html#a6e36343e3fbd1317e9bbbdfee0691141',1,'p_share_1():&#160;test_main.cpp'],['../test__main_8cpp.html#a6e36343e3fbd1317e9bbbdfee0691141',1,'p_share_1():&#160;test_main.cpp']]],
   ['pot',['pot',['../classtask__motor.html#afe8cab4e912b4814d29a8b9f0d091f48',1,'task_motor']]],
   ['pot_5f1',['pot_1',['../shares_8h.html#aa5a892890ce4839648694e817fbddfd3',1,'pot_1():&#160;test_main.cpp'],['../test__main_8cpp.html#aa5a892890ce4839648694e817fbddfd3',1,'pot_1():&#160;test_main.cpp']]],
-  ['pot_5f2',['pot_2',['../shares_8h.html#a67de327568f25bf830e7d71505443de8',1,'pot_2():&#160;test_main.cpp'],['../test__main_8cpp.html#a67de327568f25bf830e7d71505443de8',1,'pot_2():&#160;test_main.cpp']]],
   ['power',['power',['../classtask__motor.html#a291245b7c83dae649f310caf016ab959',1,'task_motor']]],
   ['power_5f1',['power_1',['../shares_8h.html#af4072aaf6ada6eb77990a94e7635f3cf',1,'power_1():&#160;test_main.cpp'],['../test__main_8cpp.html#af4072aaf6ada6eb77990a94e7635f3cf',1,'power_1():&#160;test_main.cpp']]],
-  ['power_5f2',['power_2',['../shares_8h.html#a083156cd9b0019a19d58e68339029490',1,'power_2():&#160;test_main.cpp'],['../test__main_8cpp.html#a083156cd9b0019a19d58e68339029490',1,'power_2():&#160;test_main.cpp']]],
   ['print_5fser_5fqueue',['print_ser_queue',['../shares_8h.html#a0f3e0982ec5df30e2339e7162f60a1d6',1,'print_ser_queue():&#160;test_main.cpp'],['../test__main_8cpp.html#a0f3e0982ec5df30e2339e7162f60a1d6',1,'print_ser_queue():&#160;test_main.cpp']]],
-  ['ptr_5fto_5fserial',['ptr_to_serial',['../classadc.html#a14680b48b723bf1adddd2741ebb18a3e',1,'adc::ptr_to_serial()'],['../classmotor__driver.html#a5d94686caee87309fc36257bcab1035f',1,'motor_driver::ptr_to_serial()']]]
+  ['ptr_5fto_5fserial',['ptr_to_serial',['../classadc.html#a14680b48b723bf1adddd2741ebb18a3e',1,'adc::ptr_to_serial()'],['../classencoder__driver.html#a753c05178378d4e7961938175c35e8ee',1,'encoder_driver::ptr_to_serial()'],['../classmotor__driver.html#a5d94686caee87309fc36257bcab1035f',1,'motor_driver::ptr_to_serial()'],['../classSolenoid.html#a2c5ec464ee689cd50dc2b78af63b6b1a',1,'Solenoid::ptr_to_serial()'],['../classStepper.html#a2d66212be56a13730fd79853cf95e09f',1,'Stepper::ptr_to_serial()']]]
 ];

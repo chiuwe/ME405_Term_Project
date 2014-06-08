@@ -1,0 +1,119 @@
+\hypertarget{classtask__encoder}{\section{task\-\_\-encoder \-Class \-Reference}
+\label{classtask__encoder}\index{task\-\_\-encoder@{task\-\_\-encoder}}
+}
+
+
+\-This task creates a new \hyperlink{classencoder__driver}{encoder\-\_\-driver} and outputs it's status on a regular basis.  
+
+
+
+
+{\ttfamily \#include $<$task\-\_\-encoder.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtask__encoder_a86aac760167b1b7d59840270a9365711}{task\-\_\-encoder} (const char $\ast$, unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E, size\-\_\-t, emstream $\ast$, uint8\-\_\-t, uint8\-\_\-t)
+\item 
+void \hyperlink{classtask__encoder_a8380b1f111bf5d6b4256f16e355c0afc}{run} (void)
+\item 
+void \hyperlink{classtask__encoder_a5006f06f253b70cfec10065d67e52ec6}{print\-\_\-status} (emstream \&)
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__encoder_a1730c64a9c2fb9eacf549929071ab2c5}{uint32\-\_\-t \hyperlink{classtask__encoder_a1730c64a9c2fb9eacf549929071ab2c5}{runs}}\label{classtask__encoder_a1730c64a9c2fb9eacf549929071ab2c5}
+
+\begin{DoxyCompactList}\small\item\em \-How many times through the task loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtask__encoder_ac6a3245667614f1ffab6fd035bb89144}{\hyperlink{classencoder__driver}{encoder\-\_\-driver} $\ast$ \hyperlink{classtask__encoder_ac6a3245667614f1ffab6fd035bb89144}{encoder}}\label{classtask__encoder_ac6a3245667614f1ffab6fd035bb89144}
+
+\begin{DoxyCompactList}\small\item\em \-A pointer to the driver encoder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This task creates a new \hyperlink{classencoder__driver}{encoder\-\_\-driver} and outputs it's status on a regular basis. 
+
+\-Definition at line 30 of file task\-\_\-encoder.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classtask__encoder_a86aac760167b1b7d59840270a9365711}{\index{task\-\_\-encoder@{task\-\_\-encoder}!task\-\_\-encoder@{task\-\_\-encoder}}
+\index{task\-\_\-encoder@{task\-\_\-encoder}!task_encoder@{task\-\_\-encoder}}
+\subsubsection[{task\-\_\-encoder}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task\-\_\-encoder\-::task\-\_\-encoder} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{a\-\_\-name, }
+\item[{unsigned port\-B\-A\-S\-E\-\_\-\-T\-Y\-P\-E}]{a\-\_\-priority, }
+\item[{size\-\_\-t}]{a\-\_\-stack\-\_\-size, }
+\item[{emstream $\ast$}]{p\-\_\-ser\-\_\-dev, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{uint8\-\_\-t}]{trigger}
+\end{DoxyParamCaption}
+)}}\label{classtask__encoder_a86aac760167b1b7d59840270a9365711}
+\-Basic constructor. \-Assigns all the appropriate paramiters to their respective instance variables, creates a new encoder to start running, and initializes runs to 0 
+\begin{DoxyParams}{\-Parameters}
+{\em a\-\_\-name} & \-A character string which will be the name of this task \\
+\hline
+{\em a\-\_\-priority} & \-The priority at which this task will initially run (default\-: 0) \\
+\hline
+{\em a\-\_\-stack\-\_\-size} & \-The size of this task's stack in bytes (default\-: config\-M\-I\-N\-I\-M\-A\-L\-\_\-\-S\-T\-A\-C\-K\-\_\-\-S\-I\-Z\-E) \\
+\hline
+{\em p\-\_\-ser\-\_\-dev} & \-Pointer to a serial device which can be used by this task to communicate \\
+\hline
+{\em bit} & which pin on \-P\-O\-R\-T\-E to use as an external interupt \\
+\hline
+{\em trigger} & a mask to put on the external interupt control register to make sure that the \-I\-S\-R is called both on the rising and falling edge. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 26 of file task\-\_\-encoder.\-cpp.
+
+
+
+\-References encoder, and runs.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classtask__encoder_a5006f06f253b70cfec10065d67e52ec6}{\index{task\-\_\-encoder@{task\-\_\-encoder}!print\-\_\-status@{print\-\_\-status}}
+\index{print\-\_\-status@{print\-\_\-status}!task_encoder@{task\-\_\-encoder}}
+\subsubsection[{print\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-encoder\-::print\-\_\-status} (
+\begin{DoxyParamCaption}
+\item[{emstream \&}]{ser\-\_\-thing}
+\end{DoxyParamCaption}
+)}}\label{classtask__encoder_a5006f06f253b70cfec10065d67e52ec6}
+\-Self explanitory. \-This function takes in a serial port in the form of an address and passes it straight to the parent constructor so it can print out the status. \-Also prints out the number of runs 
+
+\-Definition at line 61 of file task\-\_\-encoder.\-cpp.
+
+
+
+\-References runs.
+
+\hypertarget{classtask__encoder_a8380b1f111bf5d6b4256f16e355c0afc}{\index{task\-\_\-encoder@{task\-\_\-encoder}!run@{run}}
+\index{run@{run}!task_encoder@{task\-\_\-encoder}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf task\-\_\-encoder\-::run} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classtask__encoder_a8380b1f111bf5d6b4256f16e355c0afc}
+\-This run method is called by the \-R\-T\-O\-S and contains a loop in which the task checks for data and sends it if appropriate.
+
+\-This method is called once by the \-R\-T\-O\-S scheduler. \-Each time around the for (;;) loop, it sends the current number of errors and the current count to the screen. \-The main point is to wait for interputs to be called in \hyperlink{classencoder__driver}{encoder\-\_\-driver}, which will change $|$error$|$ and $|$count$|$ based on different functionally. 
+
+\-Definition at line 46 of file task\-\_\-encoder.\-cpp.
+
+
+
+\-References runs.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+task\-\_\-encoder.\-h\item 
+\hyperlink{task__encoder_8cpp}{task\-\_\-encoder.\-cpp}\end{DoxyCompactItemize}

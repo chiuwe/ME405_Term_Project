@@ -1,0 +1,48 @@
+\hypertarget{encoder__driver_8cpp}{\section{encoder\-\_\-driver.\-cpp \-File \-Reference}
+\label{encoder__driver_8cpp}\index{encoder\-\_\-driver.\-cpp@{encoder\-\_\-driver.\-cpp}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$avr/io.\-h$>$}\*
+{\ttfamily \#include \char`\"{}rs232int.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}encoder\-\_\-driver.\-h\char`\"{}}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{encoder__driver_8cpp_a98a290ada01eb27fd2ff4564371566e5}{\-I\-S\-R} (\-I\-N\-T4\-\_\-vect)
+\item 
+\hyperlink{encoder__driver_8cpp_a0b3e4563356b0ee073477049c51953cd}{\-I\-S\-R} (\-I\-N\-T5\-\_\-vect, \-I\-S\-R\-\_\-\-A\-L\-I\-A\-S\-O\-F(\-I\-N\-T4\-\_\-vect))
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Class for creating a way to check on a moter encoder. \-Initializes the pin to use for interupts in the constructer, and creates an \-I\-S\-R to monitor the motor functionality. \-Comes with a couple of getter and setter functions 
+
+\-Definition in file \hyperlink{encoder__driver_8cpp_source}{encoder\-\_\-driver.\-cpp}.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{encoder__driver_8cpp_a98a290ada01eb27fd2ff4564371566e5}{\index{encoder\-\_\-driver.\-cpp@{encoder\-\_\-driver.\-cpp}!\-I\-S\-R@{\-I\-S\-R}}
+\index{\-I\-S\-R@{\-I\-S\-R}!encoder_driver.cpp@{encoder\-\_\-driver.\-cpp}}
+\subsubsection[{\-I\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-I\-S\-R} (
+\begin{DoxyParamCaption}
+\item[{\-I\-N\-T4\-\_\-vect}]{}
+\end{DoxyParamCaption}
+)}}\label{encoder__driver_8cpp_a98a290ada01eb27fd2ff4564371566e5}
+\-Interupt service rutine that gets called whenever interupt pin 4 or 5 go high or low. \-Takes the current values of the two pins, and compairs them to what they were last time. \-If it's valid, increment/decrement count based on direction. \-If not, increment error. 
+
+\-Definition at line 65 of file encoder\-\_\-driver.\-cpp.
+
+
+
+\-References count, and error.
+
+\hypertarget{encoder__driver_8cpp_a0b3e4563356b0ee073477049c51953cd}{\index{encoder\-\_\-driver.\-cpp@{encoder\-\_\-driver.\-cpp}!\-I\-S\-R@{\-I\-S\-R}}
+\index{\-I\-S\-R@{\-I\-S\-R}!encoder_driver.cpp@{encoder\-\_\-driver.\-cpp}}
+\subsubsection[{\-I\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-I\-S\-R} (
+\begin{DoxyParamCaption}
+\item[{\-I\-N\-T5\-\_\-vect}]{, }
+\item[{\-I\-S\-R\-\_\-\-A\-L\-I\-A\-S\-O\-F(\-I\-N\-T4\-\_\-vect)}]{}
+\end{DoxyParamCaption}
+)}}\label{encoder__driver_8cpp_a0b3e4563356b0ee073477049c51953cd}
+\-An alias \-I\-S\-R for pin 5. 

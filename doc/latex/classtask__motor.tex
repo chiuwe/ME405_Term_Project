@@ -3,6 +3,11 @@
 }
 
 
+\-This task determines what commands to send to the motor driver.  
+
+
+
+
 {\ttfamily \#include $<$task\-\_\-motor.\-h$>$}
 
 \subsection*{\-Public \-Member \-Functions}
@@ -110,7 +115,7 @@ void \hyperlink{classtask__motor_ae855a78d1ee432a797d401a9222c9955}{print\-\_\-s
 )}}\label{classtask__motor_ae855a78d1ee432a797d401a9222c9955}
 \-Self explanitory. \-This function takes in a serial port in the form of an address and passes it straight to the parent constructor so it can print out the status. \-Also prints out the number of runs 
 
-\-Definition at line 93 of file task\-\_\-motor.\-cpp.
+\-Definition at line 94 of file task\-\_\-motor.\-cpp.
 
 
 
@@ -125,13 +130,13 @@ void \hyperlink{classtask__motor_ae855a78d1ee432a797d401a9222c9955}{print\-\_\-s
 )}}\label{classtask__motor_a895a075ec470c9d5a07b8959de06aacd}
 \-This run method is called by the \-R\-T\-O\-S and contains a loop in which the task checks for data and sends it if appropriate.
 
-\-This method is called once by the \-R\-T\-O\-S scheduler. \-Each time around the for (;;) loop, it reads the \-A/\-D converter and change the selected motors speed. \-Each loop also check the two additional buttons, which control the brakes of the individual motors. 
+\-This method is called once by the \-R\-T\-O\-S scheduler. \-Each time around the for (;;) loop, it reads the \-A/\-D converter and change the selected motors speed. \-Each loop checks if it is being controled by a pot or by a given value and reacts accordingly 
 
-\-Definition at line 62 of file task\-\_\-motor.\-cpp.
+\-Definition at line 61 of file task\-\_\-motor.\-cpp.
 
 
 
-\-References adc\-\_\-select, brake, motor\-\_\-driver\-::brake(), brake\-\_\-pin, driver, pot, power, adc\-::read\-\_\-once(), runs, and motor\-\_\-driver\-::set\-\_\-power().
+\-References adc\-\_\-select, brake, motor\-\_\-driver\-::brake(), brake\-\_\-pin, count, driver, pot, adc\-::read\-\_\-once(), and runs.
 
 
 
